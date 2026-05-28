@@ -1,0 +1,159 @@
+---
+const experience = [
+  {
+    role: 'Project Manager, NSDI',
+    org: 'Government of Zanzibar — Department of Land Registration',
+    period: '2022 — Present',
+    summary:
+      'Leading the design and implementation of Zanzibar\'s National Spatial Data Infrastructure, coordinating government agencies, technical teams, and international partners.',
+  },
+  {
+    role: 'Geospatial Analyst',
+    org: '[Organisation — update me]',
+    period: '2019 — 2022',
+    summary:
+      'Transportation network analysis, land use modelling, and GIS data management for urban and regional planning projects.',
+  },
+];
+
+const education = [
+  {
+    degree: '[Degree Title — update me]',
+    institution: '[University / Institution]',
+    year: '[Year]',
+  },
+];
+---
+<section class="section" id="cv">
+  <div class="container">
+    <div class="cv-top">
+      <div>
+        <p class="section-label">CV</p>
+        <h2 class="section-title" style="margin-bottom:0">Experience &amp; education</h2>
+      </div>
+      <a href="/cv.pdf" class="btn-download" download>
+        <svg width="13" height="13" viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path d="M6.5 1v7M4 5.5l2.5 2.5 2.5-2.5M1.5 10.5h10" stroke="currentColor" stroke-width="1.5"
+            stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        Download PDF
+      </a>
+    </div>
+
+    <div class="cv-grid">
+      <div>
+        <h3 class="cv-group-label">Experience</h3>
+        <div class="cv-list">
+          {experience.map(item => (
+            <div class="cv-item">
+              <div class="cv-item-top">
+                <div>
+                  <p class="cv-role">{item.role}</p>
+                  <p class="cv-org">{item.org}</p>
+                </div>
+                <span class="cv-period">{item.period}</span>
+              </div>
+              <p class="cv-summary">{item.summary}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <div>
+        <h3 class="cv-group-label">Education</h3>
+        <div class="cv-list">
+          {education.map(item => (
+            <div class="cv-item">
+              <div class="cv-item-top">
+                <div>
+                  <p class="cv-role">{item.degree}</p>
+                  <p class="cv-org">{item.institution}</p>
+                </div>
+                <span class="cv-period">{item.year}</span>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+.cv-top {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 24px;
+  margin-bottom: 48px;
+}
+
+.btn-download {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 18px;
+  border: 1.5px solid var(--border);
+  border-radius: 4px;
+  font-size: 0.845rem;
+  font-weight: 600;
+  color: var(--text);
+  white-space: nowrap;
+  transition: border-color 0.15s;
+  flex-shrink: 0;
+  margin-bottom: 2px;
+}
+.btn-download:hover { border-color: var(--text-muted); text-decoration: none; }
+
+.cv-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 64px;
+}
+
+.cv-group-label {
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.11em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 24px;
+}
+
+.cv-list { display: flex; flex-direction: column; gap: 28px; }
+
+.cv-item-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 16px;
+  margin-bottom: 8px;
+}
+
+.cv-role {
+  font-size: 0.93rem;
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: 2px;
+}
+.cv-org { font-size: 0.83rem; color: var(--text-muted); }
+
+.cv-period {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  white-space: nowrap;
+  flex-shrink: 0;
+  padding-top: 2px;
+}
+
+.cv-summary {
+  font-size: 0.855rem;
+  color: var(--text-muted);
+  line-height: 1.7;
+}
+
+@media (max-width: 768px) {
+  .cv-grid { grid-template-columns: 1fr; gap: 40px; }
+  .cv-top { flex-direction: column; align-items: flex-start; }
+}
+</style>

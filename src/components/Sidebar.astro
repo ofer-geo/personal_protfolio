@@ -1,0 +1,156 @@
+---
+const contacts = [
+  {
+    label: 'Email',
+    value: 'shahalo@gmail.com',
+    href: 'mailto:shahalo@gmail.com',
+  },
+  {
+    label: 'Phone',
+    value: 'fill later',
+    href: null,
+  },
+  {
+    label: 'LinkedIn',
+    value: 'fill later',
+    href: null,
+  },
+  {
+    label: 'GitHub',
+    value: 'fill later',
+    href: null,
+  },
+];
+---
+<aside class="sidebar">
+
+  <!-- Photo -->
+  <div class="sb-photo-wrap">
+    <div class="sb-photo" aria-label="Profile photo — replace with your image">
+      <svg viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <circle cx="40" cy="31" r="17" fill="#352D25"/>
+        <ellipse cx="40" cy="74" rx="30" ry="22" fill="#352D25"/>
+      </svg>
+    </div>
+  </div>
+
+  <!-- Identity -->
+  <div class="sb-identity">
+    <h1 class="sb-name">Ofer Shahal</h1>
+    <p class="sb-title">Geospatial Analyst &amp; GIS Project Manager</p>
+    <p class="sb-location">
+      <svg width="10" height="13" viewBox="0 0 10 13" fill="none" aria-hidden="true">
+        <path d="M5 0C2.24 0 0 2.24 0 5C0 8.75 5 13 5 13C5 13 10 8.75 10 5C10 2.24 7.76 0 5 0Z" fill="currentColor"/>
+        <circle cx="5" cy="5" r="2" fill="#1B1610"/>
+      </svg>
+      Zanzibar, Tanzania
+    </p>
+  </div>
+
+  <div class="sb-divider"></div>
+
+  <!-- Contacts -->
+  <nav class="sb-contacts" aria-label="Contact links">
+    {contacts.map(c => (
+      <div class="sb-contact">
+        <span class="sb-contact-label">{c.label}</span>
+        {c.href
+          ? <a href={c.href} class="sb-contact-value">{c.value}</a>
+          : <span class="sb-contact-value sb-placeholder">{c.value}</span>
+        }
+      </div>
+    ))}
+  </nav>
+
+</aside>
+
+<style>
+/* Photo */
+.sb-photo-wrap {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+.sb-photo {
+  width: 112px;
+  height: 112px;
+  border-radius: 50%;
+  background: var(--sb-hover);
+  border: 2px solid var(--sb-border);
+  overflow: hidden;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.sb-photo svg { width: 80px; height: 80px; }
+
+/* Identity */
+.sb-identity {
+  text-align: center;
+  margin-bottom: 20px;
+}
+.sb-name {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--sb-text);
+  letter-spacing: -0.01em;
+  margin-bottom: 6px;
+  line-height: 1.2;
+}
+.sb-title {
+  font-size: 0.76rem;
+  font-weight: 500;
+  color: var(--sb-accent);
+  line-height: 1.5;
+  margin-bottom: 10px;
+}
+.sb-location {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 0.75rem;
+  color: var(--sb-muted);
+}
+.sb-location svg { color: var(--sb-muted); flex-shrink: 0; }
+
+/* Divider */
+.sb-divider {
+  height: 1px;
+  background: var(--sb-border);
+  margin: 16px 0 20px;
+}
+
+/* Contacts */
+.sb-contacts { display: flex; flex-direction: column; gap: 16px; }
+.sb-contact { display: flex; flex-direction: column; gap: 3px; }
+
+.sb-contact-label {
+  font-size: 0.6rem;
+  font-weight: 700;
+  letter-spacing: 0.11em;
+  text-transform: uppercase;
+  color: var(--sb-muted);
+}
+.sb-contact-value {
+  font-size: 0.8rem;
+  color: var(--sb-text);
+  text-decoration: none;
+  word-break: break-word;
+  line-height: 1.4;
+}
+a.sb-contact-value:hover { color: var(--sb-accent); }
+.sb-placeholder { color: var(--sb-muted); font-style: italic; }
+
+/* Mobile */
+@media (max-width: 860px) {
+  .sb-photo-wrap { margin-bottom: 0; }
+  .sb-photo { width: 68px; height: 68px; }
+  .sb-photo svg { width: 56px; }
+  .sb-identity { text-align: left; margin-bottom: 0; }
+  .sb-divider { display: none; }
+  .sb-contacts { flex-direction: row; flex-wrap: wrap; gap: 8px 20px; }
+  .sb-contact { flex-direction: row; align-items: baseline; gap: 6px; }
+  .sb-contact-label::after { content: ':'; }
+}
+</style>

@@ -1,0 +1,158 @@
+---
+const experience = [
+  {
+    period: '2022 — Present',
+    role: 'Project Manager, NSDI',
+    org: 'Government of Zanzibar — Department of Land Registration',
+    desc: 'fill later',
+  },
+  {
+    period: 'fill later',
+    role: 'fill later',
+    org: 'fill later',
+    desc: 'fill later',
+  },
+  {
+    period: 'fill later',
+    role: 'fill later',
+    org: 'fill later',
+    desc: 'fill later',
+  },
+];
+
+const education = [
+  { period: 'fill later', degree: 'fill later', institution: 'fill later' },
+  { period: 'fill later', degree: 'fill later', institution: 'fill later' },
+];
+---
+<div class="panel-inner">
+  <h2 class="panel-title">Resume</h2>
+
+  <div class="resume-columns">
+    <!-- Experience -->
+    <div class="resume-group">
+      <h3 class="group-heading">Experience</h3>
+      <div class="timeline">
+        {experience.map(item => (
+          <div class="tl-item">
+            <div class="tl-line" aria-hidden="true">
+              <div class="tl-dot"></div>
+            </div>
+            <div class="tl-body">
+              <span class="tl-period">{item.period}</span>
+              <h4 class="tl-role">{item.role}</h4>
+              <p class="tl-org">{item.org}</p>
+              {item.desc && item.desc !== 'fill later'
+                ? <p class="tl-desc">{item.desc}</p>
+                : <p class="tl-desc fill-later">fill later</p>
+              }
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+
+    <!-- Education -->
+    <div class="resume-group">
+      <h3 class="group-heading">Education</h3>
+      <div class="timeline">
+        {education.map(item => (
+          <div class="tl-item">
+            <div class="tl-line" aria-hidden="true">
+              <div class="tl-dot"></div>
+            </div>
+            <div class="tl-body">
+              <span class="tl-period">{item.period}</span>
+              <h4 class="tl-role">{item.degree}</h4>
+              <p class="tl-org">{item.institution}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+.resume-columns {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 64px;
+  align-items: start;
+}
+
+.group-heading {
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ct-accent);
+  margin-bottom: 28px;
+}
+
+/* Timeline */
+.timeline { display: flex; flex-direction: column; }
+
+.tl-item {
+  display: grid;
+  grid-template-columns: 20px 1fr;
+  gap: 16px;
+  padding-bottom: 28px;
+  position: relative;
+}
+.tl-item:last-child { padding-bottom: 0; }
+
+.tl-line {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 4px;
+}
+.tl-dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: var(--ct-accent);
+  border: 2px solid var(--ct-bg);
+  outline: 1.5px solid var(--ct-accent);
+  flex-shrink: 0;
+}
+.tl-item:not(:last-child) .tl-line::after {
+  content: '';
+  flex: 1;
+  width: 1.5px;
+  background: var(--ct-border);
+  margin-top: 6px;
+}
+
+.tl-period {
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  color: var(--ct-muted);
+  display: block;
+  margin-bottom: 4px;
+}
+.tl-role {
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: var(--ct-text);
+  margin-bottom: 2px;
+  line-height: 1.35;
+}
+.tl-org {
+  font-size: 0.82rem;
+  color: var(--ct-muted);
+  margin-bottom: 6px;
+  line-height: 1.4;
+}
+.tl-desc {
+  font-size: 0.85rem;
+  color: var(--ct-muted);
+  line-height: 1.65;
+}
+
+@media (max-width: 720px) {
+  .resume-columns { grid-template-columns: 1fr; gap: 40px; }
+}
+</style>

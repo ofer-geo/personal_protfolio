@@ -1,0 +1,117 @@
+---
+---
+<div class="panel-inner">
+  <h2 class="panel-title">Conferences &amp; Recognition</h2>
+
+  <div class="conf-columns">
+
+    <!-- Conferences -->
+    <div>
+      <h3 class="conf-group-label">Conferences &amp; Presentations</h3>
+      <div class="conf-list">
+
+        <div class="conf-item">
+          <span class="conf-year fill-later">fill later</span>
+          <div class="conf-body">
+            <h4 class="conf-title fill-later">Conference / presentation title — fill later</h4>
+            <p class="conf-sub fill-later">Venue or event — fill later</p>
+          </div>
+        </div>
+
+        <div class="conf-item">
+          <span class="conf-year fill-later">fill later</span>
+          <div class="conf-body">
+            <h4 class="conf-title fill-later">Conference / presentation title — fill later</h4>
+            <p class="conf-sub fill-later">Venue or event — fill later</p>
+          </div>
+        </div>
+
+        <div class="conf-item">
+          <span class="conf-year fill-later">fill later</span>
+          <div class="conf-body">
+            <h4 class="conf-title fill-later">Conference / presentation title — fill later</h4>
+            <p class="conf-sub fill-later">Venue or event — fill later</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Recognition -->
+    <div>
+      <h3 class="conf-group-label">Recognition</h3>
+      <div class="conf-list">
+
+        <div class="conf-item">
+          <span class="conf-year fill-later">fill later</span>
+          <div class="conf-body">
+            <h4 class="conf-title fill-later">Award / recognition title — fill later</h4>
+            <p class="conf-sub fill-later">Awarding body — fill later</p>
+          </div>
+        </div>
+
+        <div class="conf-item">
+          <span class="conf-year fill-later">fill later</span>
+          <div class="conf-body">
+            <h4 class="conf-title fill-later">Award / recognition title — fill later</h4>
+            <p class="conf-sub fill-later">Awarding body — fill later</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<style>
+.conf-columns {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 56px;
+  align-items: start;
+}
+
+.conf-group-label {
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ct-accent);
+  margin-bottom: 20px;
+}
+
+.conf-list { display: flex; flex-direction: column; }
+
+.conf-item {
+  display: grid;
+  grid-template-columns: 64px 1fr;
+  gap: 16px;
+  padding: 16px 0;
+  border-bottom: 1px solid var(--ct-border);
+}
+.conf-item:first-child { border-top: 1px solid var(--ct-border); }
+
+.conf-year {
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: var(--ct-muted);
+  padding-top: 2px;
+}
+
+.conf-title {
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--ct-text);
+  line-height: 1.4;
+  margin-bottom: 3px;
+}
+.conf-sub { font-size: 0.8rem; color: var(--ct-muted); }
+
+@media (max-width: 720px) {
+  .conf-columns { grid-template-columns: 1fr; gap: 40px; }
+}
+@media (max-width: 480px) {
+  .conf-item { grid-template-columns: 1fr; gap: 4px; }
+}
+</style>

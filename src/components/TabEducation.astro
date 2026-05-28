@@ -1,0 +1,69 @@
+---
+---
+<div class="panel-inner">
+  <h2 class="panel-title">Education</h2>
+
+  <div class="edu-list">
+
+    <div class="edu-item">
+      <div class="edu-year fill-later">fill later</div>
+      <div class="edu-body">
+        <h3 class="edu-degree fill-later">Degree title — fill later</h3>
+        <p class="edu-inst fill-later">Institution — fill later</p>
+        <p class="edu-desc fill-later">Description — fill later</p>
+      </div>
+    </div>
+
+    <div class="edu-item">
+      <div class="edu-year fill-later">fill later</div>
+      <div class="edu-body">
+        <h3 class="edu-degree fill-later">Degree title — fill later</h3>
+        <p class="edu-inst fill-later">Institution — fill later</p>
+        <p class="edu-desc fill-later">Description — fill later</p>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<style>
+.edu-list { display: flex; flex-direction: column; max-width: 720px; }
+
+.edu-item {
+  display: grid;
+  grid-template-columns: 90px 1fr;
+  gap: 28px;
+  padding: 28px 0;
+  border-bottom: 1px solid var(--ct-border);
+}
+.edu-item:first-child { border-top: 1px solid var(--ct-border); }
+
+.edu-year {
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--ct-muted);
+  padding-top: 3px;
+}
+
+.edu-degree {
+  font-size: 0.97rem;
+  font-weight: 600;
+  color: var(--ct-text);
+  margin-bottom: 4px;
+  line-height: 1.35;
+}
+.edu-inst {
+  font-size: 0.84rem;
+  color: var(--ct-muted);
+  margin-bottom: 8px;
+}
+.edu-desc {
+  font-size: 0.84rem;
+  color: var(--ct-muted);
+  line-height: 1.65;
+}
+
+@media (max-width: 560px) {
+  .edu-item { grid-template-columns: 1fr; gap: 8px; }
+}
+</style>

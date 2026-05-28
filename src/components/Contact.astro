@@ -1,0 +1,144 @@
+---
+const links = [
+  {
+    label: 'Email',
+    value: 'shahalo@gmail.com',
+    href: 'mailto:shahalo@gmail.com',
+    external: false,
+  },
+  {
+    label: 'LinkedIn',
+    value: 'linkedin.com/in/ofershahal',
+    href: 'https://linkedin.com/in/ofershahal',
+    external: true,
+  },
+  {
+    label: 'GitHub',
+    value: 'github.com/ofer-geo',
+    href: 'https://github.com/ofer-geo',
+    external: true,
+  },
+];
+---
+<section class="section section-alt" id="contact">
+  <div class="container">
+    <div class="contact-grid">
+      <div class="contact-intro">
+        <p class="section-label">Contact</p>
+        <h2 class="contact-heading">Let's talk.</h2>
+        <p class="contact-sub">
+          Open to research collaborations, consulting engagements, and project
+          partnerships in geospatial analysis, transportation data, and GIS
+          infrastructure.
+        </p>
+      </div>
+      <div class="contact-links">
+        {links.map(link => (
+          <a
+            href={link.href}
+            class="contact-link"
+            target={link.external ? '_blank' : undefined}
+            rel={link.external ? 'noopener noreferrer' : undefined}
+          >
+            <span class="contact-label">{link.label}</span>
+            <span class="contact-value">{link.value}</span>
+            <span class="contact-arrow" aria-hidden="true">→</span>
+          </a>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container footer-inner">
+    <span>© 2025 Ofer Shahal</span>
+    <span>Zanzibar, Tanzania</span>
+  </div>
+</footer>
+
+<style>
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: start;
+}
+
+.contact-heading {
+  font-size: clamp(2.25rem, 5vw, 3.75rem);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  margin-bottom: 18px;
+  margin-top: 14px;
+  color: var(--text);
+}
+
+.contact-sub {
+  font-size: 0.975rem;
+  color: var(--text-muted);
+  line-height: 1.75;
+  max-width: 380px;
+}
+
+.contact-links {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding-top: 8px;
+}
+
+.contact-link {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 16px 20px;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  text-decoration: none;
+  transition: border-color 0.15s, background 0.15s;
+}
+.contact-link:hover {
+  border-color: var(--accent);
+  background: var(--accent-light);
+  text-decoration: none;
+}
+
+.contact-label {
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--accent);
+  width: 68px;
+  flex-shrink: 0;
+}
+.contact-value {
+  font-size: 0.875rem;
+  color: var(--text);
+  flex: 1;
+}
+.contact-arrow {
+  font-size: 0.875rem;
+  color: var(--text-muted);
+  transition: transform 0.15s, color 0.15s;
+}
+.contact-link:hover .contact-arrow {
+  transform: translateX(4px);
+  color: var(--accent);
+}
+
+/* Footer */
+.footer { border-top: 1px solid var(--border); padding: 24px 0; }
+.footer-inner {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.78rem;
+  color: var(--text-muted);
+}
+
+@media (max-width: 768px) {
+  .contact-grid { grid-template-columns: 1fr; gap: 40px; }
+}
+</style>

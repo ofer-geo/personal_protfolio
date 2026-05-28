@@ -1,0 +1,253 @@
+---
+const maps = [
+  {
+    title: 'Road Network Analysis — Zanzibar',
+    description:
+      'Spatial analysis of the urban and rural road network identifying connectivity gaps and priority maintenance corridors.',
+    tags: ['QGIS', 'Network Analysis', '2024'],
+  },
+  {
+    title: 'Land Use Change Detection 2010–2024',
+    description:
+      'Multi-temporal satellite imagery classification tracking land use transitions across Unguja Island over 14 years.',
+    tags: ['Remote Sensing', 'Google Earth Engine', 'Classification'],
+  },
+  {
+    title: 'Transportation Demand Model Output',
+    description:
+      'Origin-destination flow visualisation from travel demand modelling for Zanzibar Town and its surrounding corridors.',
+    tags: ['Transport Modelling', 'OD Matrix', 'Leaflet'],
+  },
+];
+
+const dataProducts = [
+  {
+    title: 'Traffic Flow Dashboard',
+    description:
+      'Interactive dashboard presenting road traffic counts, peak-hour analysis, and seasonal variation across the primary network.',
+    tags: ['Python', 'Plotly', 'Traffic Data'],
+  },
+  {
+    title: 'NSDI Coverage Index',
+    description:
+      'Spatial data completeness score across government datasets, tracking NSDI implementation progress by thematic layer.',
+    tags: ['Python', 'PostgreSQL', 'GIS Governance'],
+  },
+];
+
+const research = [
+  {
+    title: 'NSDI Implementation Framework for Small Island Developing States',
+    year: '2024',
+    abstract:
+      'A framework for designing and deploying National Spatial Data Infrastructure in resource-constrained island contexts, drawing on the Zanzibar case study.',
+    href: '#',
+  },
+  {
+    title: 'Transportation Data Quality Assessment: Zanzibar Urban Corridor',
+    year: '2023',
+    abstract:
+      'Analysis of data completeness, accuracy, and fitness-for-purpose of transportation datasets used in urban mobility planning.',
+    href: '#',
+  },
+];
+---
+<section class="section" id="work">
+  <div class="container">
+    <p class="section-label">Work</p>
+    <h2 class="section-title">Maps, data products &amp; research</h2>
+
+    <!-- Maps -->
+    <div class="subsection">
+      <h3 class="subsection-title">Maps</h3>
+      <div class="card-grid card-grid-3">
+        {maps.map(() => (
+          <div class="work-card">
+            <div class="card-thumb">
+              <svg viewBox="0 0 280 155" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <rect width="280" height="155" fill="#EDE8DF"/>
+                <line x1="0" y1="38"  x2="280" y2="38"  stroke="#D5CFC4" stroke-width="0.7"/>
+                <line x1="0" y1="77"  x2="280" y2="77"  stroke="#D5CFC4" stroke-width="0.7"/>
+                <line x1="0" y1="116" x2="280" y2="116" stroke="#D5CFC4" stroke-width="0.7"/>
+                <line x1="70"  y1="0" x2="70"  y2="155" stroke="#D5CFC4" stroke-width="0.7"/>
+                <line x1="140" y1="0" x2="140" y2="155" stroke="#D5CFC4" stroke-width="0.7"/>
+                <line x1="210" y1="0" x2="210" y2="155" stroke="#D5CFC4" stroke-width="0.7"/>
+                <text x="140" y="82" text-anchor="middle" fill="#9E8E7A" font-size="10"
+                  font-family="Inter, system-ui, sans-serif">map placeholder</text>
+              </svg>
+            </div>
+          </div>
+        ))}
+      </div>
+      <div class="card-grid card-grid-3 card-meta-grid">
+        {maps.map(item => (
+          <div class="card-body">
+            <h4 class="card-title">{item.title}</h4>
+            <p class="card-desc">{item.description}</p>
+            <div class="tags">
+              {item.tags.map(t => <span class="tag">{t}</span>)}
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+
+    <!-- Data Products -->
+    <div class="subsection">
+      <h3 class="subsection-title">Data Products</h3>
+      <div class="card-grid card-grid-2">
+        {dataProducts.map(item => (
+          <div class="work-card">
+            <div class="card-thumb">
+              <svg viewBox="0 0 420 130" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <rect width="420" height="130" fill="#EDE8DF"/>
+                <rect x="30"  y="90" width="28" height="28" fill="#3D5E35" opacity="0.45" rx="2"/>
+                <rect x="70"  y="68" width="28" height="50" fill="#3D5E35" opacity="0.55" rx="2"/>
+                <rect x="110" y="48" width="28" height="70" fill="#3D5E35" opacity="0.65" rx="2"/>
+                <rect x="150" y="58" width="28" height="60" fill="#3D5E35" opacity="0.60" rx="2"/>
+                <rect x="190" y="36" width="28" height="82" fill="#3D5E35" opacity="0.75" rx="2"/>
+                <rect x="230" y="55" width="28" height="63" fill="#3D5E35" opacity="0.58" rx="2"/>
+                <rect x="270" y="44" width="28" height="74" fill="#3D5E35" opacity="0.68" rx="2"/>
+                <rect x="310" y="70" width="28" height="48" fill="#3D5E35" opacity="0.52" rx="2"/>
+                <rect x="350" y="52" width="28" height="66" fill="#3D5E35" opacity="0.62" rx="2"/>
+                <line x1="20" y1="118" x2="400" y2="118" stroke="#C8C2B8" stroke-width="1"/>
+              </svg>
+            </div>
+            <div class="card-body">
+              <h4 class="card-title">{item.title}</h4>
+              <p class="card-desc">{item.description}</p>
+              <div class="tags">
+                {item.tags.map(t => <span class="tag">{t}</span>)}
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+
+    <!-- Research -->
+    <div class="subsection">
+      <h3 class="subsection-title">Research</h3>
+      <div class="research-list">
+        {research.map(item => (
+          <div class="research-item">
+            <span class="research-year">{item.year}</span>
+            <div class="research-body">
+              <h4 class="research-title">
+                <a href={item.href}>{item.title}</a>
+              </h4>
+              <p class="research-abstract">{item.abstract}</p>
+              <a href={item.href} class="research-cta">View paper →</a>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<style>
+.subsection { margin-bottom: 72px; }
+.subsection:last-child { margin-bottom: 0; }
+
+.subsection-title {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 24px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--border);
+}
+
+/* Card grids */
+.card-grid { display: grid; gap: 20px; }
+.card-grid-3 { grid-template-columns: repeat(3, 1fr); }
+.card-grid-2 { grid-template-columns: repeat(2, 1fr); }
+.card-meta-grid { margin-top: 8px; }
+
+.work-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  overflow: hidden;
+  transition: box-shadow 0.15s;
+}
+.work-card:hover { box-shadow: 0 4px 20px rgba(44,36,22,0.07); }
+
+/* Data product cards also have a body below the thumb */
+.card-grid-2 .work-card { display: flex; flex-direction: column; }
+
+.card-thumb { border-bottom: 1px solid var(--border); }
+.card-thumb svg { display: block; width: 100%; height: auto; }
+
+.card-body { padding: 18px 20px 20px; }
+
+.card-title {
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: 7px;
+  line-height: 1.4;
+}
+
+.card-desc {
+  font-size: 0.83rem;
+  color: var(--text-muted);
+  line-height: 1.65;
+  margin-bottom: 14px;
+}
+
+/* Research */
+.research-list { display: flex; flex-direction: column; gap: 0; }
+
+.research-item {
+  display: grid;
+  grid-template-columns: 72px 1fr;
+  gap: 32px;
+  padding: 28px 0;
+  border-bottom: 1px solid var(--border);
+}
+.research-item:first-child { border-top: 1px solid var(--border); }
+
+.research-year {
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  padding-top: 3px;
+}
+
+.research-title {
+  font-size: 1rem;
+  font-weight: 600;
+  line-height: 1.4;
+  margin-bottom: 10px;
+}
+.research-title a { color: var(--text); }
+.research-title a:hover { color: var(--accent); text-decoration: none; }
+
+.research-abstract {
+  font-size: 0.875rem;
+  color: var(--text-muted);
+  line-height: 1.7;
+  margin-bottom: 12px;
+}
+
+.research-cta {
+  font-size: 0.82rem;
+  font-weight: 500;
+  color: var(--accent);
+}
+.research-cta:hover { text-decoration: underline; }
+
+@media (max-width: 900px) {
+  .card-grid-3 { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 640px) {
+  .card-grid-3,
+  .card-grid-2 { grid-template-columns: 1fr; }
+  .research-item { grid-template-columns: 1fr; gap: 8px; }
+}
+</style>

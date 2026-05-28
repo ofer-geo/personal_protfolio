@@ -1,0 +1,206 @@
+---
+const sections = [
+  {
+    id: 'maps',
+    label: 'Maps & Geospatial Analysis',
+    projects: [
+      { title: 'Project 1 — fill later', desc: 'fill later', tags: ['fill later'] },
+      { title: 'Project 2 — fill later', desc: 'fill later', tags: ['fill later'] },
+      { title: 'Project 3 — fill later', desc: 'fill later', tags: ['fill later'] },
+    ],
+  },
+  {
+    id: 'datascience',
+    label: 'Data Science & Analysis',
+    projects: [
+      { title: 'Project 1 — fill later', desc: 'fill later', tags: ['fill later'] },
+      { title: 'Project 2 — fill later', desc: 'fill later', tags: ['fill later'] },
+      { title: 'Project 3 — fill later', desc: 'fill later', tags: ['fill later'] },
+    ],
+  },
+  {
+    id: 'gispm',
+    label: 'GIS Project Management',
+    projects: [
+      { title: 'Project 1 — fill later', desc: 'fill later', tags: ['fill later'] },
+      { title: 'Project 2 — fill later', desc: 'fill later', tags: ['fill later'] },
+      { title: 'Project 3 — fill later', desc: 'fill later', tags: ['fill later'] },
+    ],
+  },
+];
+---
+<div class="panel-inner port-panel">
+  <h2 class="panel-title">Portfolio</h2>
+
+  <!-- Sub-navigation -->
+  <nav class="port-subnav" id="port-subnav" aria-label="Portfolio sections">
+    {sections.map((s, i) => (
+      <button
+        class={`port-subnav-btn${i === 0 ? ' active' : ''}`}
+        data-psection={s.id}
+        aria-label={`Jump to ${s.label}`}
+      >
+        {s.label}
+      </button>
+    ))}
+  </nav>
+
+  <!-- Sections -->
+  {sections.map(section => (
+    <div class="port-section" id={section.id} data-section={section.id}>
+      <h3 class="port-section-title">{section.label}</h3>
+      <div class="port-grid">
+        {section.projects.map(project => (
+          <div class="card port-card">
+            <div class="port-thumb" aria-hidden="true">
+              <svg viewBox="0 0 280 150" xmlns="http://www.w3.org/2000/svg">
+                <rect width="280" height="150" fill="#EDE8DF"/>
+                <line x1="0" y1="37"  x2="280" y2="37"  stroke="#D5CFC4" stroke-width="0.7"/>
+                <line x1="0" y1="75"  x2="280" y2="75"  stroke="#D5CFC4" stroke-width="0.7"/>
+                <line x1="0" y1="112" x2="280" y2="112" stroke="#D5CFC4" stroke-width="0.7"/>
+                <line x1="70"  y1="0" x2="70"  y2="150" stroke="#D5CFC4" stroke-width="0.7"/>
+                <line x1="140" y1="0" x2="140" y2="150" stroke="#D5CFC4" stroke-width="0.7"/>
+                <line x1="210" y1="0" x2="210" y2="150" stroke="#D5CFC4" stroke-width="0.7"/>
+                <text x="140" y="79" text-anchor="middle" fill="#B0A598"
+                  font-size="10" font-family="Inter, system-ui, sans-serif">placeholder</text>
+              </svg>
+            </div>
+            <div class="port-card-body">
+              <h4 class="port-card-title">{project.title}</h4>
+              <p class="port-card-desc fill-later">{project.desc}</p>
+              <div class="tags">
+                {project.tags.map(t => <span class="tag">{t}</span>)}
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  ))}
+</div>
+
+<style>
+.port-panel { padding-bottom: 80px; }
+
+/* Sub-nav */
+.port-subnav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 48px;
+  padding: 20px 0 24px;
+  border-bottom: 1px solid var(--ct-border);
+  position: sticky;
+  top: var(--tab-h);
+  background: var(--ct-bg);
+  z-index: 5;
+}
+
+.port-subnav-btn {
+  padding: 7px 16px;
+  font-size: 0.82rem;
+  font-weight: 500;
+  font-family: inherit;
+  color: var(--ct-muted);
+  background: transparent;
+  border: 1.5px solid var(--ct-border);
+  border-radius: 20px;
+  cursor: pointer;
+  transition: all 0.15s;
+  white-space: nowrap;
+}
+.port-subnav-btn:hover {
+  color: var(--ct-accent);
+  border-color: var(--ct-accent);
+  background: var(--ct-accent-lt);
+}
+.port-subnav-btn.active {
+  color: var(--ct-accent);
+  border-color: var(--ct-accent);
+  background: var(--ct-accent-lt);
+  font-weight: 600;
+}
+
+/* Sections */
+.port-section { margin-bottom: 64px; }
+.port-section:last-child { margin-bottom: 0; }
+
+.port-section-title {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--ct-text);
+  margin-bottom: 20px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--ct-border);
+  letter-spacing: -0.01em;
+}
+
+/* Card grid */
+.port-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+}
+
+.port-thumb { border-bottom: 1px solid var(--ct-border); }
+.port-thumb svg { display: block; width: 100%; height: auto; }
+
+.port-card-body { padding: 16px 18px 18px; }
+
+.port-card-title {
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--ct-text);
+  margin-bottom: 6px;
+  line-height: 1.4;
+}
+.port-card-desc {
+  font-size: 0.81rem;
+  line-height: 1.6;
+  margin-bottom: 12px;
+}
+
+@media (max-width: 900px) {
+  .port-grid { grid-template-columns: repeat(2, 1fr); }
+  .port-subnav { top: var(--tab-h); }
+}
+@media (max-width: 560px) {
+  .port-grid { grid-template-columns: 1fr; }
+}
+</style>
+
+<script>
+  // Sub-nav: click to scroll
+  const subBtns = document.querySelectorAll<HTMLButtonElement>('.port-subnav-btn');
+
+  subBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const id = btn.dataset.psection!;
+      const section = document.getElementById(id);
+      if (!section) return;
+
+      // Offset = tab-nav height + sub-nav height + a small gap
+      const tabNavH = parseInt(
+        getComputedStyle(document.documentElement).getPropertyValue('--tab-h') || '54'
+      );
+      const subNavH = (document.getElementById('port-subnav')?.offsetHeight ?? 0);
+      const y = section.getBoundingClientRect().top + window.scrollY - tabNavH - subNavH - 8;
+      window.scrollTo({ top: y, behavior: 'smooth' });
+    });
+  });
+
+  // Sub-nav: highlight as sections come into view
+  const portSections = document.querySelectorAll<HTMLElement>('.port-section');
+  const observer = new IntersectionObserver(
+    entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const id = entry.target.getAttribute('data-section');
+          subBtns.forEach(b => b.classList.toggle('active', b.dataset.psection === id));
+        }
+      });
+    },
+    { rootMargin: '-30% 0px -60% 0px' }
+  );
+  portSections.forEach(s => observer.observe(s));
+</script>

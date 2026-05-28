@@ -1,0 +1,173 @@
+---
+---
+<section class="hero" id="hero">
+  <div class="container hero-inner">
+
+    <div class="hero-content">
+      <p class="hero-eyebrow">Geospatial Analyst &amp; GIS Project Manager</p>
+      <h1 class="hero-name">Ofer Shahal</h1>
+      <p class="hero-tagline">
+        Turning spatial and transportation data<br />into decisions that shape infrastructure.
+      </p>
+      <p class="hero-bio">
+        I work at the intersection of geospatial analysis, transportation modelling, and spatial
+        research — leading GIS initiatives that ground policy in evidence. Based in Zanzibar,
+        Tanzania, I currently manage the National Spatial Data Infrastructure (NSDI) project,
+        building the island's foundational data systems for planners, researchers, and government.
+      </p>
+      <div class="hero-ctas">
+        <a href="#work" class="btn btn-primary">View Work</a>
+        <a href="/cv.pdf" class="btn btn-outline" download>Download CV</a>
+      </div>
+    </div>
+
+    <div class="hero-visual" aria-hidden="true">
+      <div class="map-frame">
+        <svg viewBox="0 0 240 180" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <!-- Grid -->
+          <line x1="0"   y1="45"  x2="240" y2="45"  stroke="#D5CFC4" stroke-width="0.6"/>
+          <line x1="0"   y1="90"  x2="240" y2="90"  stroke="#D5CFC4" stroke-width="0.6"/>
+          <line x1="0"   y1="135" x2="240" y2="135" stroke="#D5CFC4" stroke-width="0.6"/>
+          <line x1="60"  y1="0"   x2="60"  y2="180" stroke="#D5CFC4" stroke-width="0.6"/>
+          <line x1="120" y1="0"   x2="120" y2="180" stroke="#D5CFC4" stroke-width="0.6"/>
+          <line x1="180" y1="0"   x2="180" y2="180" stroke="#D5CFC4" stroke-width="0.6"/>
+          <!-- Zanzibar island (simplified) -->
+          <path
+            d="M95 28 Q112 18 130 30 Q152 44 148 76 Q144 108 126 124 Q108 138 88 126 Q68 114 72 84 Q76 52 95 28Z"
+            fill="#D5E8D0" stroke="#3D5E35" stroke-width="1.5" stroke-linejoin="round"
+          />
+          <!-- Roads (stylised) -->
+          <path d="M108 124 L108 80 L130 60" stroke="#8B6914" stroke-width="1.2" stroke-dasharray="3 2" fill="none"/>
+          <path d="M88 100 L120 98 L140 88" stroke="#8B6914" stroke-width="1.2" stroke-dasharray="3 2" fill="none"/>
+          <!-- Pin -->
+          <circle cx="110" cy="80" r="5.5" fill="#3D5E35" stroke="#F5F0E8" stroke-width="1.5"/>
+          <line x1="110" y1="85.5" x2="110" y2="96" stroke="#3D5E35" stroke-width="1.5"/>
+        </svg>
+        <p class="map-caption">Zanzibar, Tanzania</p>
+      </div>
+    </div>
+
+  </div>
+  <div class="scroll-hint" aria-hidden="true">↓</div>
+</section>
+
+<style>
+.hero {
+  min-height: calc(100vh - 60px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 80px 0 56px;
+}
+
+.hero-inner {
+  display: grid;
+  grid-template-columns: 1fr 340px;
+  gap: 72px;
+  align-items: center;
+}
+
+.hero-eyebrow {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.11em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 18px;
+}
+
+.hero-name {
+  font-size: clamp(2.75rem, 6vw, 4.75rem);
+  font-weight: 700;
+  letter-spacing: -0.035em;
+  color: var(--text);
+  margin-bottom: 22px;
+  line-height: 1.0;
+}
+
+.hero-tagline {
+  font-size: clamp(1.1rem, 2vw, 1.3rem);
+  color: var(--text-muted);
+  line-height: 1.5;
+  margin-bottom: 28px;
+}
+
+.hero-bio {
+  font-size: 0.975rem;
+  color: var(--text-muted);
+  max-width: 520px;
+  line-height: 1.75;
+  margin-bottom: 40px;
+}
+
+.hero-ctas {
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+.btn {
+  display: inline-block;
+  padding: 12px 26px;
+  border-radius: 4px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.15s ease;
+  cursor: pointer;
+}
+.btn:hover { text-decoration: none; }
+
+.btn-primary {
+  background: var(--accent);
+  color: #fff;
+  border: 2px solid var(--accent);
+}
+.btn-primary:hover { background: var(--accent-hover); border-color: var(--accent-hover); }
+
+.btn-outline {
+  background: transparent;
+  color: var(--text);
+  border: 2px solid var(--border);
+}
+.btn-outline:hover { border-color: var(--text-muted); }
+
+/* Visual */
+.hero-visual { display: flex; justify-content: center; }
+
+.map-frame {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 20px 20px 16px;
+  width: 100%;
+  max-width: 280px;
+  text-align: center;
+}
+.map-frame svg { width: 100%; height: auto; margin-bottom: 10px; }
+.map-caption {
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+/* Scroll indicator */
+.scroll-hint {
+  text-align: center;
+  color: var(--border);
+  font-size: 1.4rem;
+  margin-top: 56px;
+  animation: nudge 2.4s ease-in-out infinite;
+}
+@keyframes nudge {
+  0%, 100% { transform: translateY(0); opacity: 0.5; }
+  50%       { transform: translateY(7px); opacity: 1; }
+}
+
+@media (max-width: 860px) {
+  .hero-inner { grid-template-columns: 1fr; }
+  .hero-visual { display: none; }
+}
+</style>

@@ -1,0 +1,133 @@
+---
+const skills = [
+  {
+    category: 'Geospatial Analysis',
+    items: ['QGIS', 'ArcGIS Pro', 'PostGIS', 'GeoPandas', 'Remote Sensing'],
+  },
+  {
+    category: 'Transportation',
+    items: ['Network Analysis', 'Traffic Modelling', 'OD Matrix', 'GTFS'],
+  },
+  {
+    category: 'Data & Research',
+    items: ['Python', 'R', 'SQL', 'Statistical Modelling', 'Report Writing'],
+  },
+  {
+    category: 'Project Management',
+    items: ['NSDI Implementation', 'Stakeholder Engagement', 'GIS Governance', 'Capacity Building'],
+  },
+];
+---
+<section class="section section-alt" id="about">
+  <div class="container">
+    <p class="section-label">About</p>
+    <h2 class="section-title">Bridging technical analysis<br />and institutional impact</h2>
+
+    <div class="about-grid">
+      <div class="about-text">
+        <p>
+          With a background spanning geospatial science and project management, I specialise in
+          transportation data analysis, spatial modelling, and GIS research. My work sits at the
+          intersection of technical rigour and practical policy — translating complex datasets into
+          outputs that inform infrastructure decisions and governance.
+        </p>
+        <p>
+          As Project Manager for the National Spatial Data Infrastructure (NSDI) in Zanzibar, I lead
+          the design and implementation of the island's foundational geospatial framework —
+          coordinating government agencies, technical teams, and international partners to build
+          sustainable data systems that serve planners, researchers, and the public.
+        </p>
+        <p>
+          I approach each engagement with a dual lens: the analyst's precision and the manager's
+          understanding of what it takes to deliver in complex institutional environments.
+        </p>
+        <p class="about-meta">
+          <span>Zanzibar, Tanzania</span>
+          <span class="meta-sep">·</span>
+          <span>English &amp; Swahili</span>
+        </p>
+      </div>
+
+      <div class="skills-grid">
+        {skills.map(group => (
+          <div class="skill-group">
+            <h4 class="skill-category">{group.category}</h4>
+            <ul class="skill-list">
+              {group.items.map(item => <li>{item}</li>)}
+            </ul>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr 360px;
+  gap: 80px;
+  align-items: start;
+}
+
+.about-text p {
+  font-size: 0.975rem;
+  color: var(--text-muted);
+  line-height: 1.8;
+  margin-bottom: 20px;
+}
+.about-text p:last-of-type { margin-bottom: 0; }
+
+.about-meta {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  font-size: 0.85rem !important;
+  color: var(--text-muted);
+  margin-top: 32px !important;
+}
+.meta-sep { color: var(--border); }
+
+.skills-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 28px 20px;
+}
+
+.skill-category {
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 10px;
+}
+
+.skill-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+.skill-list li {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  padding-left: 14px;
+  position: relative;
+}
+.skill-list li::before {
+  content: '—';
+  position: absolute;
+  left: 0;
+  color: var(--border);
+  font-size: 0.75rem;
+  top: 1px;
+}
+
+@media (max-width: 900px) {
+  .about-grid { grid-template-columns: 1fr; gap: 48px; }
+}
+@media (max-width: 480px) {
+  .skills-grid { grid-template-columns: 1fr; }
+}
+</style>
