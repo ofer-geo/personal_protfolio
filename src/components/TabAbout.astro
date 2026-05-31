@@ -73,13 +73,12 @@
 <style>
 .about-layout {
   display: grid;
-  grid-template-columns: 1fr 220px;
+  grid-template-columns: 1fr 240px;
   gap: 0;
 }
 
 .about-body {
   padding-right: 40px;
-  border-right: 1px solid var(--border);
 }
 .about-body p {
   font-size: 0.975rem;
@@ -93,12 +92,14 @@
 
 .about-sidebar {
   padding-left: 32px;
+  border-left: 2px solid var(--border);
 }
 
 .skills-section {
   padding: 4px 0;
 }
 
+/* Title indented to align with chip text (chip has 2px border-left + 10px padding) */
 .skills-title {
   font-size: 0.7rem;
   font-weight: 700;
@@ -106,6 +107,7 @@
   text-transform: uppercase;
   color: var(--accent);
   margin-bottom: 12px;
+  padding-left: 12px;
 }
 
 .chips {
@@ -114,28 +116,25 @@
   gap: 7px;
 }
 
+/* Left-accent bar style — text starts flush with title */
 .chip {
-  display: inline-block;
-  align-self: flex-start;
-  font-size: 0.78rem;
+  display: block;
+  font-size: 0.8rem;
   font-weight: 500;
-  padding: 4px 10px;
-  border-radius: 3px;
-  background: var(--bg-card);
-  border: 1px solid var(--border);
+  padding: 3px 0 3px 10px;
+  border-left: 2px solid var(--accent);
+  background: none;
+  border-radius: 0;
   color: var(--ct-muted);
-  white-space: nowrap;
 }
 
 .chip-soft {
-  background: transparent;
-  border-color: transparent;
-  padding-left: 0;
-  color: var(--text-muted, var(--ct-muted));
+  border-left-color: transparent;
+  padding-left: 10px;
 }
 .chip-soft::before {
   content: "–";
-  margin-right: 6px;
+  margin-right: 7px;
   color: var(--accent);
 }
 
@@ -151,17 +150,13 @@
   }
   .about-body {
     padding-right: 0;
-    border-right: none;
-    border-bottom: 1px solid var(--border);
+    border-bottom: 2px solid var(--border);
     padding-bottom: 28px;
     margin-bottom: 28px;
   }
   .about-sidebar {
     padding-left: 0;
-  }
-  .chips {
-    flex-direction: row;
-    flex-wrap: wrap;
+    border-left: none;
   }
 }
 </style>
