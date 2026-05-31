@@ -1,4 +1,22 @@
 ---
+const awards = [
+  {
+    years: '2019 – 2020',
+    institution: 'Tel Aviv University, Israel',
+    achievement: "The Exact Science Faculty Dean's List",
+  },
+  {
+    years: '2019 – 2022',
+    institution: 'Tel Aviv University, Israel',
+    achievement: 'B.A. Excellence Track Scholarship',
+  },
+  {
+    years: '2024',
+    institution: 'Tel Aviv University, Israel',
+    achievement: 'M.A. Excellence Scholarship of The Exact Science Faculty',
+  },
+];
+
 const conferences = [
   {
     year: '2024',
@@ -41,29 +59,68 @@ const conferences = [
 <div class="panel-inner">
   <h2 class="panel-title">Conferences &amp; Recognition</h2>
 
-  <div class="conf-list">
-    {conferences.map(c => (
-      <div class="conf-item">
-        <div class="conf-date">
-          <span class="conf-year">{c.year}</span>
-          <span class="conf-month">{c.month}</span>
-        </div>
-        <div class="conf-body">
-          <p class="conf-type">{c.type}</p>
-          <h4 class="conf-title">"{c.title}"</h4>
-          <p class="conf-event">{c.event} — {c.location}</p>
-          <p class="conf-authors">{c.authors}</p>
-        </div>
+  <div class="cr-sections">
+
+    <section class="cr-section">
+      <h3 class="cr-subtitle">Conferences</h3>
+      <div class="conf-list">
+        {conferences.map(c => (
+          <div class="conf-item">
+            <div class="conf-date">
+              <span class="conf-year">{c.year}</span>
+              <span class="conf-month">{c.month}</span>
+            </div>
+            <div class="conf-body">
+              <p class="conf-type">{c.type}</p>
+              <h4 class="conf-title">"{c.title}"</h4>
+              <p class="conf-event">{c.event} — {c.location}</p>
+              <p class="conf-authors">{c.authors}</p>
+            </div>
+          </div>
+        ))}
       </div>
-    ))}
+    </section>
+
+    <section class="cr-section">
+      <h3 class="cr-subtitle">Recognition</h3>
+      <div class="conf-list">
+        {awards.map(a => (
+          <div class="conf-item">
+            <div class="conf-date">
+              <span class="conf-year">{a.years}</span>
+            </div>
+            <div class="conf-body">
+              <h4 class="conf-title">{a.achievement}</h4>
+              <p class="conf-event">{a.institution}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
+
   </div>
 </div>
 
 <style>
+.cr-sections {
+  display: flex;
+  flex-direction: column;
+  gap: 52px;
+  max-width: 860px;
+}
+
+.cr-subtitle {
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ct-accent);
+  margin-bottom: 4px;
+}
+
 .conf-list {
   display: flex;
   flex-direction: column;
-  max-width: 860px;
 }
 
 .conf-item {
