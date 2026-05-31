@@ -4,7 +4,7 @@
   <div class="container hero-inner">
 
     <div class="hero-content">
-      <p class="hero-eyebrow">Geospatial Analyst &amp; GIS Project Manager</p>
+      <p class="hero-eyebrow">Geospatial Scientist &amp; GIS Project Manager</p>
       <h1 class="hero-name">Ofer Shahal</h1>
       <p class="hero-tagline">
         Turning spatial and transportation data<br />into decisions that shape infrastructure.
@@ -19,6 +19,7 @@
         <a href="#work" class="btn btn-primary">View Work</a>
         <a href="/cv.pdf" class="btn btn-outline" download>Download CV</a>
       </div>
+      <p class="hero-phone"><a href="tel:+972502407766">+972-50-240-7766</a></p>
     </div>
 
     <div class="hero-visual" aria-hidden="true">
@@ -31,19 +32,19 @@
           <line x1="60"  y1="0"   x2="60"  y2="180" stroke="#D5CFC4" stroke-width="0.6"/>
           <line x1="120" y1="0"   x2="120" y2="180" stroke="#D5CFC4" stroke-width="0.6"/>
           <line x1="180" y1="0"   x2="180" y2="180" stroke="#D5CFC4" stroke-width="0.6"/>
-          <!-- Zanzibar island (simplified) -->
+          <!-- Israel (simplified) -->
           <path
-            d="M95 28 Q112 18 130 30 Q152 44 148 76 Q144 108 126 124 Q108 138 88 126 Q68 114 72 84 Q76 52 95 28Z"
+            d="M118 22 Q126 24 130 34 Q136 48 132 64 Q140 76 138 92 Q134 110 124 126 Q116 140 110 148 Q104 140 98 126 Q90 110 88 92 Q86 76 94 64 Q90 48 96 34 Q100 24 118 22Z"
             fill="#D5E8D0" stroke="#3D5E35" stroke-width="1.5" stroke-linejoin="round"
           />
           <!-- Roads (stylised) -->
-          <path d="M108 124 L108 80 L130 60" stroke="#8B6914" stroke-width="1.2" stroke-dasharray="3 2" fill="none"/>
-          <path d="M88 100 L120 98 L140 88" stroke="#8B6914" stroke-width="1.2" stroke-dasharray="3 2" fill="none"/>
-          <!-- Pin -->
-          <circle cx="110" cy="80" r="5.5" fill="#3D5E35" stroke="#F5F0E8" stroke-width="1.5"/>
-          <line x1="110" y1="85.5" x2="110" y2="96" stroke="#3D5E35" stroke-width="1.5"/>
+          <path d="M110 148 L110 90 L130 70" stroke="#8B6914" stroke-width="1.2" stroke-dasharray="3 2" fill="none"/>
+          <path d="M90 100 L120 98 L138 90" stroke="#8B6914" stroke-width="1.2" stroke-dasharray="3 2" fill="none"/>
+          <!-- Pin — Tel Aviv -->
+          <circle cx="104" cy="88" r="5.5" fill="#3D5E35" stroke="#F5F0E8" stroke-width="1.5"/>
+          <line x1="104" y1="93.5" x2="104" y2="104" stroke="#3D5E35" stroke-width="1.5"/>
         </svg>
-        <p class="map-caption">Zanzibar, Tanzania</p>
+        <p class="map-caption">Tel Aviv, Israel</p>
       </div>
     </div>
 
@@ -105,6 +106,17 @@
   gap: 14px;
   flex-wrap: wrap;
 }
+
+.hero-phone {
+  margin-top: 16px;
+  font-size: 0.875rem;
+  color: var(--text-muted);
+}
+.hero-phone a {
+  color: inherit;
+  text-decoration: none;
+}
+.hero-phone a:hover { color: var(--accent); }
 
 .btn {
   display: inline-block;
