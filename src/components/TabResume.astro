@@ -73,16 +73,22 @@ const education = [
     period: '2025 – Present',
     degree: 'Certified Data Scientist — Generative AI & AI Agents',
     institution: 'Bar-Ilan University',
+    details: [],
   },
   {
     period: '2022 – 2024',
     degree: "Master's Degree in Geography",
     institution: 'Tel Aviv University — Geosimulation Lab',
+    details: ['Final grade: 93 — Magna Cum Laude'],
   },
   {
     period: '2018 – 2022',
-    degree: "Bachelor's Degree in Geography & Middle Eastern Studies",
+    degree: "Bachelor's Degree",
     institution: 'Tel Aviv University',
+    details: [
+      'Geography & the Human Environment — 96, Summa Cum Laude',
+      'Middle Eastern & African History — 93, Magna Cum Laude',
+    ],
   },
 ];
 ---
@@ -125,6 +131,11 @@ const education = [
               <span class="tl-period">{item.period}</span>
               <h4 class="tl-role">{item.degree}</h4>
               <p class="tl-org">{item.institution}</p>
+              {item.details.length > 0 && (
+                <ul class="tl-bullets">
+                  {item.details.map(d => <li>{d}</li>)}
+                </ul>
+              )}
             </div>
           </div>
         ))}
