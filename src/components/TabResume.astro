@@ -1,28 +1,89 @@
 ---
 const experience = [
   {
-    period: '2022 — Present',
-    role: 'Project Manager, NSDI',
-    org: 'Government of Zanzibar — Department of Land Registration',
-    desc: 'fill later',
+    period: '2025 – Present',
+    role: 'GIS Project Manager',
+    org: 'Sivan Design D.S LTD — Israel / Zanzibar / Nigeria',
+    bullets: [
+      'Leading the implementation of national and state-level Spatial Data Infrastructures (SDI), including ZanSDI (Zanzibar) and Ogun State SDI.',
+      'Leading technical teams and developers to deliver solutions aligned with business needs, operational requirements, and stakeholder expectations.',
+      'Preparing technical documentation: system design reports, integration specifications, data model design, and system architecture documentation.',
+      'Supervising deployment and integration of an open-source GIS technology stack: GeoNode, GeoServer, and PostGIS.',
+      'Designing data schemas and metadata structures for government datasets.',
+      'Coordinating integration with external APIs and authentication services.',
+      'Delivering capacity-building programs to ensure sustainable local ownership.',
+    ],
   },
   {
-    period: 'fill later',
-    role: 'fill later',
-    org: 'fill later',
-    desc: 'fill later',
+    period: '2022 – 2025',
+    role: 'Transportation Data Analyst & GIS Data Manager',
+    org: 'Tel Aviv-Yafo Municipality, Tel-Aviv',
+    bullets: [
+      'Integrated transportation and micromobility datasets (GTFS, SIRI, e-scooter trajectories, vehicle counts).',
+      'Delivered spatial analyses, maps, dashboards, and reports to support planning and operations.',
+      'Automated data processing using Python, GIS, and database tools.',
+    ],
   },
   {
-    period: 'fill later',
-    role: 'fill later',
-    org: 'fill later',
-    desc: 'fill later',
+    period: '2024',
+    role: 'Teaching Assistant',
+    org: 'Tel Aviv University, Tel-Aviv',
+    bullets: [
+      'GIS courses in the Geography Department — lectures, assignments preparation, and review.',
+    ],
+  },
+  {
+    period: '2023',
+    role: 'Geospatial Analyst & Researcher',
+    org: 'Freelance',
+    bullets: [
+      'Conducted Big Data analysis of shared e-scooter datasets: data cleaning, processing, and spatial analysis.',
+      'Developed visualizations and policy-oriented insights for urban transportation planning and decision-making.',
+    ],
+  },
+  {
+    period: '2021 – 2022',
+    role: 'Research Assistant',
+    org: 'Geo-Simulation Lab, Tel Aviv University, Tel-Aviv',
+    bullets: [
+      'Participated in joint research with the University of Manchester.',
+    ],
+  },
+  {
+    period: '2021 – 2022',
+    role: 'Geospatial Data Analyst',
+    org: 'Competition Authority, Jerusalem',
+    bullets: [
+      'Applied geographic principles in departmental research projects.',
+      'Utilized GIS tools and methodologies to enhance decision-making.',
+    ],
+  },
+  {
+    period: '2020 – 2021',
+    role: 'GIS Operator',
+    org: 'Ministry of Environmental Protection, Jerusalem',
+    bullets: [
+      'Managed and enhanced GIS data for the Environmental Planning Department.',
+    ],
   },
 ];
 
 const education = [
-  { period: 'fill later', degree: 'fill later', institution: 'fill later' },
-  { period: 'fill later', degree: 'fill later', institution: 'fill later' },
+  {
+    period: '2025 – Present',
+    degree: 'Certified Data Scientist — Generative AI & AI Agents',
+    institution: 'Bar-Ilan University',
+  },
+  {
+    period: '2022 – 2024',
+    degree: "Master's Degree in Geography",
+    institution: 'Tel Aviv University — Geosimulation Lab',
+  },
+  {
+    period: '2018 – 2022',
+    degree: "Bachelor's Degree in Geography & Middle Eastern Studies",
+    institution: 'Tel Aviv University',
+  },
 ];
 ---
 <div class="panel-inner">
@@ -42,10 +103,9 @@ const education = [
               <span class="tl-period">{item.period}</span>
               <h4 class="tl-role">{item.role}</h4>
               <p class="tl-org">{item.org}</p>
-              {item.desc && item.desc !== 'fill later'
-                ? <p class="tl-desc">{item.desc}</p>
-                : <p class="tl-desc fill-later">fill later</p>
-              }
+              <ul class="tl-bullets">
+                {item.bullets.map(b => <li>{b}</li>)}
+              </ul>
             </div>
           </div>
         ))}
@@ -76,7 +136,7 @@ const education = [
 <style>
 .resume-columns {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr 320px;
   gap: 64px;
   align-items: start;
 }
@@ -97,7 +157,7 @@ const education = [
   display: grid;
   grid-template-columns: 20px 1fr;
   gap: 16px;
-  padding-bottom: 28px;
+  padding-bottom: 32px;
   position: relative;
 }
 .tl-item:last-child { padding-bottom: 0; }
@@ -143,16 +203,33 @@ const education = [
 .tl-org {
   font-size: 0.82rem;
   color: var(--ct-muted);
-  margin-bottom: 6px;
+  margin-bottom: 8px;
   line-height: 1.4;
 }
-.tl-desc {
-  font-size: 0.85rem;
+
+.tl-bullets {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+.tl-bullets li {
+  font-size: 0.84rem;
   color: var(--ct-muted);
-  line-height: 1.65;
+  line-height: 1.6;
+  padding-left: 14px;
+  position: relative;
+}
+.tl-bullets li::before {
+  content: '·';
+  position: absolute;
+  left: 0;
+  color: var(--ct-accent);
+  font-size: 1.1rem;
+  line-height: 1.4;
 }
 
-@media (max-width: 720px) {
+@media (max-width: 800px) {
   .resume-columns { grid-template-columns: 1fr; gap: 40px; }
 }
 </style>
