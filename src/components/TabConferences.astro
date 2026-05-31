@@ -1,117 +1,130 @@
 ---
+const conferences = [
+  {
+    year: '2024',
+    month: 'April',
+    title: 'Towards a Sustainable City Policy for Managing Shared Dockless E-Scooters',
+    event: 'ABMTrans2024 — 13th International Workshop on Agent-based Mobility, Traffic and Transportation Models',
+    location: 'Hasselt, Belgium',
+    type: 'Presentation',
+    authors: 'Ofer Shahal, Aleksey Ogulenko, Arik Talor, Itzhak Benenson',
+  },
+  {
+    year: '2024',
+    month: 'April',
+    title: 'Towards a Sustainable City Policy for Managing Shared Dockless E-Scooters',
+    event: 'Israeli Regional Science Annual Conference',
+    location: 'Tel Aviv, Israel',
+    type: 'Presentation',
+    authors: 'Ofer Shahal, Aleksey Ogulenko, Itzhak Benenson',
+  },
+  {
+    year: '2023',
+    month: 'November',
+    title: 'Shared Dockless E-Scooters in the City: System Analysis and the Novel Management Policy',
+    event: '18th Conference on Location Based Services',
+    location: 'Ghent, Belgium',
+    type: 'Online Presentation — Best Papers Section',
+    authors: 'Ofer Shahal, Aleksey Ogulenko, Arik Talor, Itzhak Benenson',
+  },
+  {
+    year: '2023',
+    month: 'June',
+    title: 'On the Way to the Optimal Urban Micro-Mobility Policy: The Use of the Shared Dockless E-Scooters in Tel-Aviv',
+    event: '3rd Annual & Students Conference — Israeli Smart Transportation Research Center',
+    location: 'Israel',
+    type: 'Presentation',
+    authors: 'Ofer Shahal, Aleksey Ogulenko, Arik Talor, Itzhak Benenson',
+  },
+];
 ---
 <div class="panel-inner">
   <h2 class="panel-title">Conferences &amp; Recognition</h2>
 
-  <div class="conf-columns">
-
-    <!-- Conferences -->
-    <div>
-      <h3 class="conf-group-label">Conferences &amp; Presentations</h3>
-      <div class="conf-list">
-
-        <div class="conf-item">
-          <span class="conf-year fill-later">fill later</span>
-          <div class="conf-body">
-            <h4 class="conf-title fill-later">Conference / presentation title — fill later</h4>
-            <p class="conf-sub fill-later">Venue or event — fill later</p>
-          </div>
+  <div class="conf-list">
+    {conferences.map(c => (
+      <div class="conf-item">
+        <div class="conf-date">
+          <span class="conf-year">{c.year}</span>
+          <span class="conf-month">{c.month}</span>
         </div>
-
-        <div class="conf-item">
-          <span class="conf-year fill-later">fill later</span>
-          <div class="conf-body">
-            <h4 class="conf-title fill-later">Conference / presentation title — fill later</h4>
-            <p class="conf-sub fill-later">Venue or event — fill later</p>
-          </div>
+        <div class="conf-body">
+          <p class="conf-type">{c.type}</p>
+          <h4 class="conf-title">"{c.title}"</h4>
+          <p class="conf-event">{c.event} — {c.location}</p>
+          <p class="conf-authors">{c.authors}</p>
         </div>
-
-        <div class="conf-item">
-          <span class="conf-year fill-later">fill later</span>
-          <div class="conf-body">
-            <h4 class="conf-title fill-later">Conference / presentation title — fill later</h4>
-            <p class="conf-sub fill-later">Venue or event — fill later</p>
-          </div>
-        </div>
-
       </div>
-    </div>
-
-    <!-- Recognition -->
-    <div>
-      <h3 class="conf-group-label">Recognition</h3>
-      <div class="conf-list">
-
-        <div class="conf-item">
-          <span class="conf-year fill-later">fill later</span>
-          <div class="conf-body">
-            <h4 class="conf-title fill-later">Award / recognition title — fill later</h4>
-            <p class="conf-sub fill-later">Awarding body — fill later</p>
-          </div>
-        </div>
-
-        <div class="conf-item">
-          <span class="conf-year fill-later">fill later</span>
-          <div class="conf-body">
-            <h4 class="conf-title fill-later">Award / recognition title — fill later</h4>
-            <p class="conf-sub fill-later">Awarding body — fill later</p>
-          </div>
-        </div>
-
-      </div>
-    </div>
-
+    ))}
   </div>
 </div>
 
 <style>
-.conf-columns {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 56px;
-  align-items: start;
+.conf-list {
+  display: flex;
+  flex-direction: column;
+  max-width: 860px;
 }
-
-.conf-group-label {
-  font-size: 0.68rem;
-  font-weight: 700;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--ct-accent);
-  margin-bottom: 20px;
-}
-
-.conf-list { display: flex; flex-direction: column; }
 
 .conf-item {
   display: grid;
-  grid-template-columns: 64px 1fr;
-  gap: 16px;
-  padding: 16px 0;
+  grid-template-columns: 80px 1fr;
+  gap: 24px;
+  padding: 20px 0;
   border-bottom: 1px solid var(--ct-border);
 }
 .conf-item:first-child { border-top: 1px solid var(--ct-border); }
 
-.conf-year {
-  font-size: 0.72rem;
-  font-weight: 600;
-  color: var(--ct-muted);
+.conf-date {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
   padding-top: 2px;
+}
+.conf-year {
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: var(--ct-text);
+  line-height: 1;
+}
+.conf-month {
+  font-size: 0.72rem;
+  color: var(--ct-muted);
+  margin-top: 2px;
+}
+
+.conf-type {
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color: var(--ct-accent);
+  margin-bottom: 5px;
 }
 
 .conf-title {
-  font-size: 0.88rem;
+  font-size: 0.9rem;
   font-weight: 600;
   color: var(--ct-text);
-  line-height: 1.4;
-  margin-bottom: 3px;
+  line-height: 1.45;
+  margin-bottom: 5px;
 }
-.conf-sub { font-size: 0.8rem; color: var(--ct-muted); }
 
-@media (max-width: 720px) {
-  .conf-columns { grid-template-columns: 1fr; gap: 40px; }
+.conf-event {
+  font-size: 0.8rem;
+  color: var(--ct-muted);
+  margin-bottom: 3px;
+  line-height: 1.4;
 }
+
+.conf-authors {
+  font-size: 0.78rem;
+  color: var(--ct-muted);
+  font-style: italic;
+}
+
 @media (max-width: 480px) {
-  .conf-item { grid-template-columns: 1fr; gap: 4px; }
+  .conf-item { grid-template-columns: 1fr; gap: 6px; }
+  .conf-date { flex-direction: row; gap: 8px; align-items: baseline; }
 }
 </style>
