@@ -62,6 +62,18 @@ const contacts = [
     ))}
   </nav>
 
+  <div class="sb-divider"></div>
+
+  <!-- Languages -->
+  <div class="sb-section">
+    <p class="sb-section-label">Languages</p>
+    <div class="sb-langs">
+      <div class="sb-lang"><span class="sb-lang-name">Hebrew</span><span class="sb-lang-level">Native</span></div>
+      <div class="sb-lang"><span class="sb-lang-name">English</span><span class="sb-lang-level">Fluent</span></div>
+      <div class="sb-lang"><span class="sb-lang-name">Portuguese</span><span class="sb-lang-level">Good</span></div>
+    </div>
+  </div>
+
 </aside>
 
 <style>
@@ -141,6 +153,30 @@ const contacts = [
 }
 a.sb-contact-value:hover { color: var(--sb-accent); }
 .sb-placeholder { color: var(--sb-muted); font-style: italic; }
+
+/* Languages section */
+.sb-section-label {
+  font-size: 0.6rem;
+  font-weight: 700;
+  letter-spacing: 0.11em;
+  text-transform: uppercase;
+  color: var(--sb-muted);
+  margin-bottom: 10px;
+}
+.sb-langs { display: flex; flex-direction: column; gap: 7px; }
+.sb-lang {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+.sb-lang-name {
+  font-size: 0.8rem;
+  color: var(--sb-text);
+}
+.sb-lang-level {
+  font-size: 0.72rem;
+  color: var(--sb-muted);
+}
 
 /* Mobile */
 @media (max-width: 860px) {
