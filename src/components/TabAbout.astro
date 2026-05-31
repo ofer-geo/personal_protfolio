@@ -92,55 +92,39 @@
 
 .about-sidebar {
   padding-left: 32px;
-  border-left: 2px solid var(--border);
+  border-left: 2px solid var(--ct-border);
 }
 
 .skills-section {
   padding: 4px 0;
 }
 
-/* Title indented to align with chip text (chip has 2px border-left + 10px padding) */
 .skills-title {
   font-size: 0.7rem;
   font-weight: 700;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: var(--accent);
+  color: var(--ct-accent);
   margin-bottom: 12px;
-  padding-left: 12px;
 }
 
 .chips {
   display: flex;
   flex-direction: column;
-  gap: 7px;
+  gap: 6px;
 }
 
-/* Left-accent bar style — text starts flush with title */
 .chip {
   display: block;
   font-size: 0.8rem;
-  font-weight: 500;
-  padding: 3px 0 3px 10px;
-  border-left: 2px solid var(--accent);
-  background: none;
-  border-radius: 0;
+  font-weight: 400;
   color: var(--ct-muted);
-}
-
-.chip-soft {
-  border-left-color: transparent;
-  padding-left: 10px;
-}
-.chip-soft::before {
-  content: "–";
-  margin-right: 7px;
-  color: var(--accent);
+  line-height: 1.5;
 }
 
 .skills-divider {
   border: none;
-  border-top: 1px solid var(--border);
+  border-top: 1px solid var(--ct-border);
   margin: 20px 0;
 }
 
@@ -150,7 +134,7 @@
   }
   .about-body {
     padding-right: 0;
-    border-bottom: 2px solid var(--border);
+    border-bottom: 2px solid var(--ct-border);
     padding-bottom: 28px;
     margin-bottom: 28px;
   }
