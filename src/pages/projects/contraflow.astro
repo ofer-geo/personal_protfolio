@@ -1,0 +1,70 @@
+---
+import ProjectLayout from '../../layouts/ProjectLayout.astro';
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+---
+<ProjectLayout
+  title="Contraflow Riding on One-Way Streets"
+  year="2023"
+  category="Urban Mobility · Safety Analysis"
+  tools={['Python', 'GeoPandas', 'Shapely', 'QGIS', 'OpenStreetMap', 'Populus']}
+>
+
+  <section class="proj-section">
+    <h2 class="proj-section-title">Overview</h2>
+    <div class="proj-body">
+      <p>
+        The Florentine neighborhood in south Tel Aviv is characterized by narrow, dense one-way streets —
+        a common feature of older urban fabric built before the car. As shared e-scooter adoption grew
+        rapidly across the city, anecdotal evidence and enforcement reports suggested riders were
+        frequently traveling against designated traffic direction, raising serious safety concerns for
+        both riders and other road users.
+      </p>
+      <p>
+        This analysis used raw GPS trip data from the Populus mobility data platform to systematically
+        identify scooter trips that conflicted with street directionality. Each recorded trip trajectory
+        was overlaid against a street network derived from OpenStreetMap, with directional attributes
+        assigned per segment. Spatial joins between trip routes and one-way segments allowed precise
+        quantification of contraflow riding — by street, by time of day, and by operator.
+      </p>
+      <p>
+        Results revealed significant contraflow concentration on specific corridors, providing actionable
+        spatial intelligence for enforcement prioritization. The findings also informed infrastructure
+        proposals: streets with the highest contraflow rates were cross-referenced with cycling
+        infrastructure plans, identifying candidates for formal contra-flow bike lane designation.
+      </p>
+    </div>
+  </section>
+
+  <section class="proj-section">
+    <h2 class="proj-section-title">Map — Florentine Contraflow Analysis</h2>
+    <img
+      src={`${base}/maps/contraflow.png`}
+      alt="Map showing contraflow e-scooter trips in the Florentine neighborhood, Tel Aviv"
+      class="proj-map"
+      loading="lazy"
+    />
+    <p class="proj-map-caption">
+      Shared e-scooter trip segments classified as contraflow (against one-way direction) in the
+      Florentine neighborhood, overlaid on the street network.
+    </p>
+  </section>
+
+  <section class="proj-section">
+    <h2 class="proj-section-title">Methods</h2>
+    <div class="proj-body">
+      <p>
+        Trip GPS traces were matched to street segments using GeoPandas and Shapely geometric operations.
+        Street directionality (oneway attributes) was extracted from OpenStreetMap and validated against
+        municipal street data. A trip segment was classified as contraflow when its bearing conflicted
+        with the permitted travel direction of the matched street segment by more than a defined angular
+        threshold, filtering out GPS noise.
+      </p>
+      <p>
+        Results were aggregated by street segment to produce a contraflow intensity surface, and by
+        operator and time band to support operational recommendations. All analysis was conducted in
+        Python with QGIS used for final cartographic output.
+      </p>
+    </div>
+  </section>
+
+</ProjectLayout>

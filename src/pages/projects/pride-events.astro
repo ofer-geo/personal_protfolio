@@ -1,0 +1,78 @@
+---
+import ProjectLayout from '../../layouts/ProjectLayout.astro';
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+---
+<ProjectLayout
+  title="Peak-Hour Fleet Distribution at Special Events: Pride Parade Analysis"
+  year="2024"
+  category="Event Analysis · Mobility Management"
+  tools={['Python', 'GeoPandas', 'Pandas', 'QGIS', 'Populus', 'Density Mapping']}
+>
+
+  <section class="proj-section">
+    <h2 class="proj-section-title">Overview</h2>
+    <div class="proj-body">
+      <p>
+        Tel Aviv's Pride Parade is the city's largest annual street event, drawing hundreds of thousands
+        of participants and radically reshaping transportation demand across the central city. In the
+        hours surrounding the parade, shared e-scooter demand spikes dramatically — vehicles cluster
+        along the route and surrounding streets, while large sections of the city simultaneously lose
+        access due to road closures and temporary parking restrictions.
+      </p>
+      <p>
+        This analysis used real-time fleet data from the Populus platform to map where shared
+        e-scooters were available and where demand concentrated during the parade's peak hour.
+        Fleet distribution maps were overlaid with temporary parking restriction zones issued for the
+        event, revealing gaps between where vehicles were parked and where riders needed them.
+      </p>
+      <p>
+        Findings helped operators understand spatial mismatches ahead of future events and supported
+        the municipality's pre-positioning negotiations with operators. The density maps also identified
+        streets where parking restrictions created effective no-go zones without compensating supply
+        in adjacent areas.
+      </p>
+    </div>
+  </section>
+
+  <section class="proj-section">
+    <h2 class="proj-section-title">Maps — Pride Parade Peak Hour</h2>
+    <div class="proj-map-grid">
+      <div>
+        <img
+          src={`${base}/maps/pride-distribution.jpg`}
+          alt="Map of shared e-scooter distribution during Tel Aviv Pride Parade peak hour"
+          class="proj-map"
+          loading="lazy"
+        />
+        <p class="proj-map-caption">Vehicle fleet distribution at peak hour — Pride Parade 2024.</p>
+      </div>
+      <div>
+        <img
+          src={`${base}/maps/pride-density.jpg`}
+          alt="Density map of shared e-scooter concentration during Pride Parade"
+          class="proj-map"
+          loading="lazy"
+        />
+        <p class="proj-map-caption">Vehicle density surface during parade peak hour.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="proj-section">
+    <h2 class="proj-section-title">Methods</h2>
+    <div class="proj-body">
+      <p>
+        Raw Populus status-change data was filtered to the event's peak-hour window and processed
+        into point-in-time vehicle snapshots using Python and Pandas. Vehicle locations were then
+        joined to a grid layer and to parking restriction polygons (provided by the municipality as
+        GeoJSON) to identify restricted and unrestricted availability zones.
+      </p>
+      <p>
+        Density surfaces were generated using KDE on vehicle coordinates, and trip origin data from
+        the same hour provided a demand reference layer. Both layers were visualized in QGIS with
+        matched scales and extents to enable direct comparison between supply and demand patterns.
+      </p>
+    </div>
+  </section>
+
+</ProjectLayout>

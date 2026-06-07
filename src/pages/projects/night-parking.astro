@@ -1,0 +1,82 @@
+---
+import ProjectLayout from '../../layouts/ProjectLayout.astro';
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+---
+<ProjectLayout
+  title="Near-Home Parking: Shortest-Path Lot Assignment Model"
+  year="2025"
+  category="Network Analysis · Urban Parking"
+  tools={['Python', 'OSMnx', 'NetworkX', 'GeoPandas', 'QGIS', 'Shortest Path']}
+>
+
+  <section class="proj-section">
+    <h2 class="proj-section-title">Objective</h2>
+    <ul class="proj-list">
+      <li>Tel Aviv's "Near-Home Parking" policy gives residents priority overnight access to municipal off-street parking lots close to their homes.</li>
+      <li>As the policy expanded, a key planning question arose: <strong>which streets should be assigned to which parking lot?</strong> Manual, administratively drawn boundaries were inconsistent and ignored real walking distances.</li>
+      <li>The goal was to build a spatial model that assigns every residential street to the nearest available lot — minimizing walking distance while balancing demand across all participating lots.</li>
+      <li>The final model and assignments were <strong>adopted into the municipality's production system</strong> and now serve as the operational basis for the policy.</li>
+    </ul>
+  </section>
+
+  <section class="proj-section">
+    <h2 class="proj-section-title">Maps</h2>
+    <img
+      src={`${base}/maps/night-parking-load-index.jpg`}
+      alt="City-wide map showing the load index of near-home parking lots across Tel Aviv quarters"
+      class="proj-map"
+      loading="lazy"
+    />
+    <p class="proj-map-caption">
+      Parking lot load index across Tel Aviv — circle size proportional to assigned resident demand.
+      Identifies overloaded lots and guides capacity planning.
+    </p>
+    <img
+      src={`${base}/maps/night-parking-service-area.jpg`}
+      alt="Map comparing current vs model-derived service area for HaHashmal near-home parking lot"
+      class="proj-map"
+      loading="lazy"
+    />
+    <p class="proj-map-caption">
+      Single-lot example (HaHashmal): administratively drawn service boundary (red) vs. model-derived
+      catchment based on shortest-path walking distance (green).
+    </p>
+  </section>
+
+  <section class="proj-section">
+    <h2 class="proj-section-title">Methodology</h2>
+    <ul class="proj-list">
+      <li><strong>Street network:</strong> The pedestrian road network was extracted from OpenStreetMap using OSMnx, with edge weights set to real walking distances.</li>
+      <li><strong>Shortest-path assignment:</strong> For each residential address, walking distances to all participating lots were computed using NetworkX. Each street was assigned to its closest lot.</li>
+      <li><strong>Capacity constraints:</strong> When a lot reached capacity, overflow demand was re-assigned to the next-nearest available lot — implemented as an iterative allocation loop run across 12 synthesis rounds as new lots joined the policy.</li>
+      <li><strong>Load index:</strong> Each lot received a load score combining the number of assigned streets and estimated resident demand, normalized against lot capacity — flagging lots under pressure.</li>
+      <li><strong>Service areas:</strong> Lot catchment polygons were derived from the assignment output, replacing the hand-drawn administrative boundaries previously used for the policy.</li>
+    </ul>
+  </section>
+
+</ProjectLayout>
+
+<style>
+  :global(.proj-list) {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    max-width: 68ch;
+  }
+  :global(.proj-list li) {
+    font-size: 0.9rem;
+    line-height: 1.7;
+    color: #2A2A2A;
+    padding-left: 1.2em;
+    position: relative;
+  }
+  :global(.proj-list li::before) {
+    content: '—';
+    position: absolute;
+    left: 0;
+    color: #3D5E35;
+    font-weight: 600;
+  }
+</style>

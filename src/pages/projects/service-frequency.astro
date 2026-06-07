@@ -1,0 +1,84 @@
+---
+import ProjectLayout from '../../layouts/ProjectLayout.astro';
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+---
+<ProjectLayout
+  title="Bus Service Frequency Changes in Tel Aviv: 2022–2024"
+  year="2024"
+  category="Public Transport Analysis · Temporal GIS"
+  tools={['Python', 'GTFS', 'GeoPandas', 'QGIS', 'Choropleth Mapping']}
+>
+
+  <section class="proj-section">
+    <h2 class="proj-section-title">Overview</h2>
+    <div class="proj-body">
+      <p>
+        Service frequency — how often a bus arrives — is one of the most direct measures of
+        public transport quality. For riders, a bus that comes every 8 minutes versus every 20 minutes
+        is the difference between a usable service and one you have to plan around. Tracking how
+        frequency changes over time, and where, reveals which areas are getting better service and
+        which are being left behind.
+      </p>
+      <p>
+        This analysis used GTFS (General Transit Feed Specification) data to compute average
+        headways by route segment across three time periods: 2022, 2023, and 2024. Changes in
+        frequency were mapped at the route-segment level, using a diverging color scheme to clearly
+        distinguish improvements (more frequent service) from degradations (less frequent service).
+      </p>
+      <p>
+        The year-over-year maps revealed both system-wide trends and localized changes tied to
+        specific route restructurings and the ongoing integration of the new light rail network,
+        which absorbed some bus demand while triggering adjustments to connecting routes.
+      </p>
+    </div>
+  </section>
+
+  <section class="proj-section">
+    <h2 class="proj-section-title">Maps — Year-over-Year Frequency Change</h2>
+    <img
+      src={`${base}/maps/freq-2022-2023.jpg`}
+      alt="Map of bus service frequency changes in Tel Aviv between 2022 and 2023"
+      class="proj-map"
+      loading="lazy"
+    />
+    <p class="proj-map-caption">
+      2022 → 2023: Route segments colored by change in service frequency. Green = improved headways; red = reduced frequency.
+    </p>
+    <img
+      src={`${base}/maps/freq-2023-2024.jpg`}
+      alt="Map of bus service frequency changes in Tel Aviv between 2023 and 2024"
+      class="proj-map"
+      loading="lazy"
+    />
+    <p class="proj-map-caption">
+      2023 → 2024: Continued restructuring visible as light rail integration proceeded, with notable frequency gains on trunk corridors.
+    </p>
+    <img
+      src={`${base}/maps/freq-2024.jpg`}
+      alt="Map of bus service frequency in Tel Aviv, 2024"
+      class="proj-map"
+      loading="lazy"
+    />
+    <p class="proj-map-caption">
+      2024 state: Current service frequency baseline across the network.
+    </p>
+  </section>
+
+  <section class="proj-section">
+    <h2 class="proj-section-title">Methods</h2>
+    <div class="proj-body">
+      <p>
+        GTFS feeds were processed in Python to extract scheduled trip frequencies by route and
+        time period (AM peak, PM peak, off-peak). Average headways were computed per route segment
+        for each year. Segments were matched across years using route identifiers, and the delta
+        in headway was calculated as the primary change metric.
+      </p>
+      <p>
+        Route geometries from the GTFS shapes files were joined with the computed headway changes
+        using GeoPandas. Diverging choropleth maps were produced in QGIS with a neutral midpoint
+        at zero change, allowing direct visual comparison of the three periods.
+      </p>
+    </div>
+  </section>
+
+</ProjectLayout>

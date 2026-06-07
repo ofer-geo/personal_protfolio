@@ -1,0 +1,81 @@
+---
+import ProjectLayout from '../../layouts/ProjectLayout.astro';
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+---
+<ProjectLayout
+  title="Who Pays to Park? Mapping Tel Aviv's Parking Equity by Neighborhood"
+  year="2023"
+  category="Urban Policy Analysis · Cartography"
+  tools={['Python', 'GeoPandas', 'QGIS', 'Choropleth Mapping', 'Spatial Join']}
+>
+
+  <section class="proj-section">
+    <h2 class="proj-section-title">Overview</h2>
+    <div class="proj-body">
+      <p>
+        Tel Aviv's curbside parking is divided into three categories: blue-and-white paid zones,
+        free white-line spaces, and newly introduced grey regulated areas. The city's ongoing
+        rollout of paid parking is politically charged — the distribution of who absorbs parking costs
+        maps closely onto neighborhood demographics and proximity to the city center.
+      </p>
+      <p>
+        This analysis joined parking space inventories to neighborhood boundaries, computing
+        the share of paid versus free parking for each neighborhood across the city. Rather than
+        framing it as a technical inventory, the maps were designed to answer a policy question:
+        is the burden of paid parking falling equitably, or is it concentrated in particular parts
+        of the city?
+      </p>
+      <p>
+        Multiple palette and classification variants were produced for different audiences — detailed
+        graduated maps for technical review, and simplified three-color versions for committee
+        presentations. The maps revealed stark spatial variation: central neighborhoods are
+        predominantly paid, while peripheral neighborhoods retain large shares of free curbside access.
+        This portrait underpins ongoing policy discussions about the pace and geography of further
+        pricing rollout.
+      </p>
+    </div>
+  </section>
+
+  <section class="proj-section">
+    <h2 class="proj-section-title">Maps — Parking Type by Neighborhood</h2>
+    <img
+      src={`${base}/maps/parking-blue-white.png`}
+      alt="Choropleth map showing percentage of blue-and-white paid parking by Tel Aviv neighborhood"
+      class="proj-map"
+      loading="lazy"
+    />
+    <p class="proj-map-caption">
+      Share of blue-and-white (paid) parking spaces by neighborhood. Darker shading indicates higher
+      proportion of paid curbside.
+    </p>
+    <img
+      src={`${base}/maps/parking-free-neighborhood.png`}
+      alt="Choropleth map showing percentage of free parking by Tel Aviv neighborhood"
+      class="proj-map"
+      loading="lazy"
+    />
+    <p class="proj-map-caption">
+      Share of free (unpaid) parking by neighborhood — the inverse of the paid parking distribution,
+      highlighting which areas retain the most free curbside access.
+    </p>
+  </section>
+
+  <section class="proj-section">
+    <h2 class="proj-section-title">Methods</h2>
+    <div class="proj-body">
+      <p>
+        Parking space data was sourced from the municipal parking inventory, containing each
+        space's type (blue/white, white, grey) and location. Spaces were spatially joined to
+        neighborhood polygons using GeoPandas, and summary statistics — total spaces, spaces by
+        type, and type shares — were computed per neighborhood.
+      </p>
+      <p>
+        Choropleth maps were produced in QGIS using Jenks natural-breaks classification for the
+        technical variants and manual breaks for the simplified committee versions. Multiple color
+        palettes were tested for perceptual clarity and accessibility, with the selected palettes
+        validated for color-vision deficiency compatibility.
+      </p>
+    </div>
+  </section>
+
+</ProjectLayout>

@@ -1,0 +1,80 @@
+---
+import ProjectLayout from '../../layouts/ProjectLayout.astro';
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+---
+<ProjectLayout
+  title="Spatial Equity of Shared Micro-Mobility in Peripheral Neighborhoods"
+  year="2023"
+  category="Spatial Analysis · Urban Equity"
+  tools={['Python', 'GeoPandas', 'SciPy', 'QGIS', 'Kernel Density Estimation', 'TAZ Analysis']}
+>
+
+  <section class="proj-section">
+    <h2 class="proj-section-title">Overview</h2>
+    <div class="proj-body">
+      <p>
+        Shared micro-mobility operators promised to extend accessible transportation beyond the city
+        center. In practice, commercial incentives push vehicles toward high-density, high-demand zones —
+        concentrating supply in central neighborhoods and leaving peripheral quarters underserved.
+        This analysis investigated whether shared e-scooter availability was equitably distributed
+        across Tel Aviv's outer quarters.
+      </p>
+      <p>
+        Using vehicle location snapshots from multiple operators collected via the Populus platform,
+        kernel density estimation (KDE) was applied to model spatial availability patterns across the
+        entire city. Results were aggregated to Traffic Analysis Zones (TAZ) to enable structured
+        neighborhood-level comparison and expose supply-demand mismatches that raw counts would obscure.
+      </p>
+      <p>
+        The analysis of Quarter 7 — one of the city's more peripheral and socioeconomically mixed
+        quarters — revealed a pronounced deficit: despite significant trip origin activity in the area,
+        vehicle availability was substantially lower than in central quarters at equivalent demand levels.
+        This evidence base directly supported arguments for redistribution requirements in operator
+        licensing discussions.
+      </p>
+    </div>
+  </section>
+
+  <section class="proj-section">
+    <h2 class="proj-section-title">Maps — Quarter 7 Distribution Analysis</h2>
+    <div class="proj-map-grid">
+      <div>
+        <img
+          src={`${base}/maps/scooter-kde-density.png`}
+          alt="Kernel density map of shared e-scooter availability in Quarter 7, Tel Aviv"
+          class="proj-map"
+          loading="lazy"
+        />
+        <p class="proj-map-caption">KDE surface — vehicle availability density across Quarter 7.</p>
+      </div>
+      <div>
+        <img
+          src={`${base}/maps/scooter-kde-taz.png`}
+          alt="TAZ-level vehicle count map for Quarter 7, Tel Aviv"
+          class="proj-map"
+          loading="lazy"
+        />
+        <p class="proj-map-caption">Vehicle counts aggregated to Traffic Analysis Zones (TAZ).</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="proj-section">
+    <h2 class="proj-section-title">Methods</h2>
+    <div class="proj-body">
+      <p>
+        Vehicle location data was processed from raw Populus status-change feeds into time-stamped
+        availability snapshots. SciPy's Gaussian KDE was applied to vehicle coordinates to generate a
+        continuous density surface, using bandwidth selected via cross-validation to balance
+        smoothing against spatial resolution.
+      </p>
+      <p>
+        Density surfaces were rasterized and intersected with TAZ boundaries using GeoPandas spatial
+        joins, enabling zonal statistics by planning area. A demand proxy — trip origin density from
+        the same period — was computed in parallel and compared with availability density to derive
+        a supply-demand ratio per TAZ. QGIS was used for symbology, classification, and final map output.
+      </p>
+    </div>
+  </section>
+
+</ProjectLayout>
