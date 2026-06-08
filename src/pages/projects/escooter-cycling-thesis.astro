@@ -65,6 +65,30 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
   </section>
 
   <section class="proj-section">
+    <h2 class="proj-section-title">Results in Charts</h2>
+    <img
+      src={`${base}/maps/thesis-bike-share-chosen-vs-shortest.png`}
+      alt="Line chart titled 'Share of links with a bike path' comparing the chosen route (blue, 50–63%) against the shortest path (green, 38–45%) across route-length bands from under 1km to over 5km"
+      class="proj-map"
+      loading="lazy"
+    />
+    <p class="proj-map-caption">
+      Across every route-length band, the chosen route (blue) ran along bike-path links far more often than the
+      shortest-path alternative (green) would — a gap of roughly 12–19 percentage points that widens with trip length.
+    </p>
+    <img
+      src={`${base}/maps/thesis-detour-ratio-histogram.png`}
+      alt="Histogram of the ratio between chosen-route length and shortest-path length, sharply peaked just above 1.0 with a labelled mean of 1.09"
+      class="proj-map"
+      loading="lazy"
+    />
+    <p class="proj-map-caption">
+      Distribution of chosen-route length divided by shortest-path length: the vast majority of trips cluster just
+      above a ratio of 1.0, with a mean of 1.09 — the numerical backbone of the "~9% longer than necessary" finding above.
+    </p>
+  </section>
+
+  <section class="proj-section">
     <h2 class="proj-section-title">Thesis Document</h2>
     <p class="proj-body">
       The full thesis — including the complete literature review, methodology, data tables and discussion —
