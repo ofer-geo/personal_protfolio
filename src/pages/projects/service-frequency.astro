@@ -13,10 +13,10 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
     <h2 class="proj-section-title">Background</h2>
     <div class="proj-body">
       <p>
-        How often a bus arrives is one of the clearest measures of public-transport quality — the
-        gap between an 8-minute and a 20-minute headway is the difference between a service people
-        can rely on and one they have to plan around. This project tracked how Tel Aviv's bus
-        frequency shifted between 2022 and 2024, and where.
+        How often a bus arrives is one of the clearest measures of transit quality — an 8-minute
+        headway versus a 20-minute one is the difference between a service people rely on and one
+        they plan around. This project tracked how Tel Aviv's bus frequency shifted between 2022
+        and 2024, and where.
       </p>
     </div>
   </section>
@@ -39,7 +39,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
       loading="lazy"
     />
     <p class="proj-map-caption">
-      2023 → 2024: Continued restructuring visible as light rail integration proceeded, with notable frequency gains on trunk corridors.
+      2023 → 2024: Continued restructuring as light rail integration proceeded, with frequency gains on trunk corridors.
     </p>
     <img
       src={`${base}/maps/freq-2024.jpg`}
@@ -55,9 +55,9 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
   <section class="proj-section">
     <h2 class="proj-section-title">Methodology</h2>
     <ul class="proj-list">
-      <li>Processed three years of <strong>GTFS</strong> feeds in <strong>Python</strong> to compute average headways by route segment and time period (AM peak, PM peak, off-peak).</li>
-      <li>Matched segments across years by route identifier and calculated the year-over-year change in headway as the core metric.</li>
-      <li>Joined route geometries from GTFS shape files to the computed deltas with <strong>GeoPandas</strong>, then built diverging <strong>choropleth maps</strong> in <strong>QGIS</strong> with a neutral midpoint at zero change.</li>
+      <li>Processed three years of <strong>GTFS</strong> feeds in <strong>Python</strong> to compute average headways by route segment and time period (AM/PM peak, off-peak).</li>
+      <li>Matched segments across years by route ID and calculated year-over-year change in headway as the core metric.</li>
+      <li>Joined GTFS route geometries to the computed deltas with <strong>GeoPandas</strong>, then built diverging <strong>choropleth maps</strong> in <strong>QGIS</strong> centered on zero change.</li>
     </ul>
   </section>
 
@@ -65,9 +65,9 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
     <h2 class="proj-section-title">Results</h2>
     <div class="proj-body">
       <p>
-        The year-over-year maps surfaced both citywide trends and localized shifts tied to specific
-        route restructurings — most notably the integration of the new light rail network, which
-        absorbed bus demand on some corridors while triggering frequency gains on connecting trunk routes.
+        The maps surfaced both citywide trends and localized shifts tied to specific
+        restructurings — most notably the new light rail integration, which absorbed bus demand on
+        some corridors while boosting frequency on connecting trunk routes.
       </p>
     </div>
   </section>

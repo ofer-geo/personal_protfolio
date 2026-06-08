@@ -14,12 +14,11 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
     <h2 class="proj-section-title">Background</h2>
     <div class="proj-body">
       <p>
-        Bus reliability is one of the biggest factors shaping whether people choose public transport —
-        yet operators often only learn a line is unreliable after the fact. Built as part of
-        <strong>Bar-Ilan University's Data Science programme</strong> with <strong>Tamir Edelstein</strong>
-        of <strong>Elia Transportation Engineering Ltd.</strong>, this project set out to predict —
-        before or during a trip — whether a bus would arrive <em>early</em>, <em>on time</em>, or
-        <em>delayed</em>, giving operators a tool for proactive scheduling and dispatching decisions.
+        Bus reliability shapes whether people choose public transport — yet operators often only
+        learn a line is unreliable after the fact. Built with <strong>Bar-Ilan University's Data
+        Science programme</strong> and <strong>Tamir Edelstein</strong> of <strong>Elia
+        Transportation Engineering</strong>, this project predicts — before or during a trip —
+        whether a bus will arrive <em>early</em>, <em>on time</em>, or <em>delayed</em>.
       </p>
     </div>
   </section>
@@ -27,10 +26,10 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
   <section class="proj-section">
     <h2 class="proj-section-title">Methodology</h2>
     <ul class="proj-list">
-      <li>Merged real-time vehicle positions and trip records from the <strong>SIRI API</strong> with <strong>GTFS</strong> timetables, passenger counts, weather data and route-network GIS layers into a single trip-level dataset.</li>
-      <li>Engineered temporal, spatial, operational and historical-probability features capturing how each line and segment had performed before.</li>
-      <li>Trained and compared <strong>Logistic Regression</strong>, <strong>Random Forest</strong>, <strong>LightGBM</strong> and <strong>XGBoost</strong> as a three-class classifier, addressing class imbalance with <strong>SMOTE</strong> and tuning the final model with <strong>Optuna</strong>.</li>
-      <li>Used <strong>SHAP</strong> values to explain predictions feature-by-feature, rather than treating the model as a black box.</li>
+      <li>Merged <strong>SIRI</strong> real-time vehicle data with <strong>GTFS</strong> timetables, passenger counts, weather and route-network GIS layers into one trip-level dataset.</li>
+      <li>Engineered temporal, spatial and historical-performance features for each line and segment.</li>
+      <li>Trained and compared <strong>Logistic Regression</strong>, <strong>Random Forest</strong>, <strong>LightGBM</strong> and <strong>XGBoost</strong>, balancing classes with <strong>SMOTE</strong> and tuning with <strong>Optuna</strong>.</li>
+      <li>Used <strong>SHAP</strong> values to explain predictions feature-by-feature.</li>
     </ul>
   </section>
 
@@ -43,8 +42,8 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
       loading="lazy"
     />
     <p class="proj-map-caption">
-      ROC curves across all three classes: XGBoost (red) and LightGBM (orange) clearly outperform the simpler
-      baselines, reaching AUC scores of 0.83 (early), 0.90 (delay) and 0.90 (on-time).
+      XGBoost (red) and LightGBM (orange) outperform the simpler baselines, reaching AUC scores of
+      0.83 (early), 0.90 (delay) and 0.90 (on-time).
     </p>
     <img
       src={`${base}/maps/ml-bus-delay-shap-summary.png`}
@@ -53,13 +52,12 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
       loading="lazy"
     />
     <p class="proj-map-caption">
-      SHAP summary for the "delay" class — line/direction identity, the historical probability of running early
-      by hour, and arrival hour emerge as the strongest drivers of a delay prediction.
+      SHAP summary for the "delay" class — line identity, historical on-time probability by hour,
+      and arrival hour are the strongest predictors.
     </p>
     <ul class="proj-list">
-      <li>The selected <strong>XGBoost</strong> classifier reached roughly <strong>83% accuracy</strong> — well above the ~74% "always predict the most common class" baseline — and performed especially strongly on the operationally critical delay class (precision 0.86, recall 0.94).</li>
-      <li><strong>SHAP</strong> analysis showed that line identity, historical on-time probability by hour, and time of day were the strongest predictors of delay.</li>
-      <li>Distinguishing "early" from "on-time" trips remained the hardest part of the problem — both are rare and easy to confuse, a limitation the project documents as a direction for further work.</li>
+      <li><strong>XGBoost</strong> reached roughly <strong>83% accuracy</strong> — above the ~74% baseline — with strong performance on the operationally critical delay class (precision 0.86, recall 0.94).</li>
+      <li>Distinguishing "early" from "on-time" trips remained the hardest part — both are rare and easy to confuse, a limitation noted as a direction for further work.</li>
     </ul>
   </section>
 

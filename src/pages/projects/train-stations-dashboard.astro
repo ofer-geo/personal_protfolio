@@ -15,9 +15,9 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
     <div class="proj-body">
       <p>
         Israel Railways publishes detailed open data on station activity, but digging through it
-        station-by-station and period-by-period takes real effort. This project turns that raw open
-        data into an interactive dashboard that lets planners, researchers — or just curious commuters —
-        explore passenger departure patterns across the network without writing a line of code.
+        station-by-station takes real effort. This project turns that raw data into an interactive
+        dashboard that lets planners, researchers — or curious commuters — explore departure
+        patterns across the network without writing code.
       </p>
     </div>
   </section>
@@ -47,10 +47,10 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
   <section class="proj-section">
     <h2 class="proj-section-title">Methodology</h2>
     <ul class="proj-list">
-      <li>Combined official departure-activity data from the <strong>Israeli Government Open Data Portal</strong> with <strong>GTFS</strong> station coordinates and schedules for the 2025 service year, processed in <strong>Pandas</strong>.</li>
-      <li>Built an interactive <strong>Streamlit</strong> app letting users explore any station's activity at day, month or year resolution, with custom date-range comparisons.</li>
-      <li>Implemented working-day logic that separates regular service from weekends and Israeli public holidays (using the Jewish calendar), so trends reflect real operating patterns.</li>
-      <li>Visualized time-of-day distribution with <strong>Plotly</strong> charts and embedded an interactive <strong>Folium</strong> map for geographic context.</li>
+      <li>Combined departure-activity data from the <strong>Israeli Government Open Data Portal</strong> with <strong>GTFS</strong> station coordinates and 2025 schedules, processed in <strong>Pandas</strong>.</li>
+      <li>Built an interactive <strong>Streamlit</strong> app for exploring any station's activity at day, month or year resolution, with custom date-range comparisons.</li>
+      <li>Implemented working-day logic separating regular service from weekends and Israeli holidays (Jewish calendar), so trends reflect real operating patterns.</li>
+      <li>Visualized time-of-day distribution with <strong>Plotly</strong> charts and an embedded <strong>Folium</strong> map for geographic context.</li>
     </ul>
   </section>
 
@@ -58,8 +58,8 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
     <h2 class="proj-section-title">Results</h2>
     <div class="proj-body">
       <p>
-        The dashboard is live on Streamlit Community Cloud, giving anyone — without touching code — a
-        way to spot peak-hour loads, off-peak gaps and long-term ridership trends across Israel's rail network.
+        The dashboard is live on Streamlit Community Cloud, letting anyone spot peak-hour loads,
+        off-peak gaps and long-term ridership trends across Israel's rail network — no code required.
       </p>
     </div>
   </section>

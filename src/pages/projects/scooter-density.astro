@@ -14,9 +14,9 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
     <div class="proj-body">
       <p>
         Shared e-scooter operators promised mobility access beyond the city center, but commercial
-        incentives naturally pull fleets toward dense, high-demand zones — leaving peripheral
-        neighborhoods underserved. This analysis tested whether that imbalance was actually happening
-        in Tel Aviv's outer quarters, focusing on Quarter 7, a peripheral and socioeconomically mixed area.
+        incentives naturally pull fleets toward dense, high-demand zones, leaving peripheral
+        neighborhoods underserved. This analysis tested whether that imbalance was happening in Tel
+        Aviv's Quarter 7, a peripheral, socioeconomically mixed area.
       </p>
     </div>
   </section>
@@ -48,9 +48,9 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
   <section class="proj-section">
     <h2 class="proj-section-title">Methodology</h2>
     <ul class="proj-list">
-      <li>Compiled vehicle-location snapshots from multiple operators via the <strong>Populus</strong> platform.</li>
-      <li>Modeled citywide availability with <strong>Kernel Density Estimation</strong> in <strong>SciPy</strong>, selecting bandwidth through cross-validation to balance smoothing against resolution.</li>
-      <li>Aggregated density surfaces to <strong>Traffic Analysis Zones (TAZ)</strong> with <strong>GeoPandas</strong> spatial joins, then computed a supply-vs-demand ratio per zone using trip-origin density as a demand proxy.</li>
+      <li>Compiled vehicle-location snapshots from multiple operators via <strong>Populus</strong>.</li>
+      <li>Modeled citywide availability with <strong>Kernel Density Estimation</strong> in <strong>SciPy</strong>, selecting bandwidth via cross-validation.</li>
+      <li>Aggregated density surfaces to <strong>Traffic Analysis Zones (TAZ)</strong> with <strong>GeoPandas</strong>, then computed a supply-vs-demand ratio per zone using trip-origin density as a proxy for demand.</li>
       <li>Produced final classification and cartography in <strong>QGIS</strong>.</li>
     </ul>
   </section>
@@ -59,9 +59,9 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
     <h2 class="proj-section-title">Results</h2>
     <div class="proj-body">
       <p>
-        Quarter 7 showed a clear deficit: despite strong trip-origin activity, vehicle availability
-        lagged well behind central quarters facing comparable demand. That evidence became a direct
-        input to the redistribution requirements discussed in the city's operator-licensing process.
+        Quarter 7 showed a clear deficit — despite strong trip-origin activity, vehicle availability
+        lagged well behind central quarters with comparable demand. That evidence fed directly into
+        redistribution requirements in the city's operator-licensing process.
       </p>
     </div>
   </section>

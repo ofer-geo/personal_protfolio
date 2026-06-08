@@ -13,11 +13,10 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
     <h2 class="proj-section-title">Background</h2>
     <div class="proj-body">
       <p>
-        Tel Aviv's Florentine neighborhood is a dense grid of narrow one-way streets — typical of older
-        urban fabric built before the car. As shared e-scooters spread through the city, enforcement
-        reports pointed to riders frequently traveling against traffic direction, raising safety concerns
-        for riders and pedestrians alike. This analysis set out to measure exactly how much contraflow
-        riding was happening, where, and by whom.
+        Tel Aviv's Florentine neighborhood is a dense grid of narrow one-way streets typical of
+        older urban fabric. As shared e-scooters spread, enforcement reports flagged riders
+        frequently traveling against traffic — a safety concern for riders and pedestrians alike.
+        This analysis measured how much contraflow riding was happening, where, and by whom.
       </p>
     </div>
   </section>
@@ -39,9 +38,9 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
   <section class="proj-section">
     <h2 class="proj-section-title">Methodology</h2>
     <ul class="proj-list">
-      <li>Pulled raw GPS trip data from the <strong>Populus</strong> mobility platform and street geometry with directional attributes from <strong>OpenStreetMap</strong>.</li>
-      <li>Used <strong>GeoPandas</strong> and <strong>Shapely</strong> to map-match each trip trajectory to its street segment and compare travel bearing against the segment's permitted direction.</li>
-      <li>Flagged a trip as contraflow when its bearing deviated beyond a defined angular threshold — filtering out GPS noise — then aggregated results by street, time of day and operator.</li>
+      <li>Pulled GPS trip data from <strong>Populus</strong> and directional street geometry from <strong>OpenStreetMap</strong>.</li>
+      <li>Used <strong>GeoPandas</strong> and <strong>Shapely</strong> to map-match each trip to its street segment and compare its bearing against the permitted direction.</li>
+      <li>Flagged trips as contraflow when bearing deviated beyond a threshold (filtering GPS noise), then aggregated by street, time of day and operator.</li>
       <li>Produced final cartography and classification in <strong>QGIS</strong>.</li>
     </ul>
   </section>
@@ -50,10 +49,9 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
     <h2 class="proj-section-title">Results</h2>
     <div class="proj-body">
       <p>
-        Contraflow riding concentrated heavily on a handful of corridors — giving enforcement teams a
-        precise, prioritized target list instead of a citywide guess. Cross-referencing those corridors
-        with the city's cycling infrastructure plans also surfaced strong candidates for new contraflow
-        bike lanes, turning a safety problem into an infrastructure opportunity.
+        Contraflow riding concentrated on a handful of corridors, giving enforcement a precise
+        target list instead of a citywide guess. Cross-referencing those corridors with the city's
+        cycling plans also surfaced strong candidates for new contraflow bike lanes.
       </p>
     </div>
   </section>

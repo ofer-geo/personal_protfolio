@@ -13,10 +13,10 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
     <h2 class="proj-section-title">Background</h2>
     <div class="proj-body">
       <p>
-        Tel Aviv's Pride Parade is the city's largest annual street event — and for a few hours it
-        completely upends transportation demand downtown. Riders cluster along the route while road
-        closures and parking restrictions cut large parts of the city off from shared e-scooter access.
-        This analysis mapped exactly where that mismatch happened during the parade's peak hour.
+        Tel Aviv's Pride Parade is the city's largest annual street event, and for a few hours it
+        upends transportation demand downtown. Riders cluster along the route while road closures
+        cut other areas off from e-scooter access. This analysis mapped that mismatch during the
+        parade's peak hour.
       </p>
     </div>
   </section>
@@ -48,9 +48,9 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
   <section class="proj-section">
     <h2 class="proj-section-title">Methodology</h2>
     <ul class="proj-list">
-      <li>Filtered real-time fleet feeds from <strong>Populus</strong> to the event's peak-hour window and processed them into point-in-time snapshots with <strong>Python</strong> and <strong>Pandas</strong>.</li>
-      <li>Joined vehicle locations to a spatial grid and to municipal parking-restriction polygons (GeoJSON) using <strong>GeoPandas</strong>.</li>
-      <li>Generated <strong>KDE</strong> density surfaces for both vehicle supply and trip-origin demand, then visualized both in <strong>QGIS</strong> at matched scales for direct comparison.</li>
+      <li>Filtered real-time fleet feeds from <strong>Populus</strong> to the peak-hour window and built point-in-time snapshots with <strong>Python</strong> and <strong>Pandas</strong>.</li>
+      <li>Joined vehicle locations to a spatial grid and municipal parking-restriction polygons using <strong>GeoPandas</strong>.</li>
+      <li>Generated <strong>KDE</strong> density surfaces for vehicle supply and trip-origin demand, then visualized both in <strong>QGIS</strong> at matched scales.</li>
     </ul>
   </section>
 
@@ -58,10 +58,10 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
     <h2 class="proj-section-title">Results</h2>
     <div class="proj-body">
       <p>
-        The maps exposed clear gaps between where scooters were parked and where riders actually
-        needed them — including streets where parking restrictions created effective no-go zones with
-        no compensating supply nearby. The findings fed directly into the municipality's pre-positioning
-        negotiations with operators ahead of future events.
+        The maps exposed clear gaps between where scooters were parked and where riders needed them
+        — including no-go zones created by parking restrictions with no compensating supply nearby.
+        The findings fed directly into the city's pre-positioning talks with operators ahead of
+        future events.
       </p>
     </div>
   </section>

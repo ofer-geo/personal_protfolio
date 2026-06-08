@@ -13,11 +13,10 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
     <h2 class="proj-section-title">Background</h2>
     <div class="proj-body">
       <p>
-        Tel Aviv's curbside parking splits into paid (blue-and-white), free (white-line) and newly
-        introduced grey regulated zones — and the rollout of paid parking is politically sensitive,
-        since who absorbs the cost tracks closely with neighborhood demographics and distance from
-        the center. This project mapped that distribution to answer a policy question directly: is
-        the burden of paid parking falling evenly across the city?
+        Tel Aviv's curbside parking splits into paid (blue-and-white), free (white-line) and grey
+        regulated zones — and its rollout is politically sensitive, since who pays tracks closely
+        with neighborhood demographics. This project mapped that distribution to answer one
+        question: is the burden of paid parking falling evenly across the city?
       </p>
     </div>
   </section>
@@ -49,9 +48,9 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
   <section class="proj-section">
     <h2 class="proj-section-title">Methodology</h2>
     <ul class="proj-list">
-      <li>Spatially joined the municipal parking-space inventory to neighborhood boundaries with <strong>GeoPandas</strong>, computing the share of paid vs. free spaces per neighborhood.</li>
-      <li>Built <strong>choropleth maps</strong> in <strong>QGIS</strong> using <strong>Jenks natural-breaks classification</strong> for technical review, plus simplified manual-break versions for committee presentations.</li>
-      <li>Tested multiple color palettes for perceptual clarity, validating the final selections for color-vision-deficiency accessibility.</li>
+      <li>Spatially joined the municipal parking inventory to neighborhood boundaries with <strong>GeoPandas</strong>, computing the share of paid vs. free spaces per area.</li>
+      <li>Built <strong>choropleth maps</strong> in <strong>QGIS</strong> — <strong>Jenks natural-breaks</strong> for technical review, simplified manual breaks for committee presentations.</li>
+      <li>Tested color palettes for perceptual clarity and color-vision-deficiency accessibility.</li>
     </ul>
   </section>
 
@@ -60,8 +59,8 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
     <div class="proj-body">
       <p>
         The pattern was stark: central neighborhoods are overwhelmingly paid, while peripheral areas
-        retain large shares of free curbside access. That spatial portrait now underpins ongoing
-        committee discussions about the pace and geography of the next phase of paid-parking rollout.
+        retain large shares of free curbside. That portrait now informs committee discussions on
+        the pace and geography of the next rollout phase.
       </p>
     </div>
   </section>

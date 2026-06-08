@@ -13,11 +13,10 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
     <h2 class="proj-section-title">Background</h2>
     <div class="proj-body">
       <p>
-        Tel Aviv's "Near-Home Parking" policy gives residents priority overnight access to municipal
-        lots near their homes. As the policy expanded, the city faced a concrete planning question —
-        which streets should be assigned to which lot? The existing boundaries were drawn by hand and
-        ignored real walking distances, so this project built a spatial model to assign every street to
-        its nearest available lot while balancing demand across the network.
+        Tel Aviv's "Near-Home Parking" policy gives residents priority overnight access to nearby
+        municipal lots. As it expanded, the city needed to decide which streets map to which lot —
+        the existing boundaries were hand-drawn and ignored real walking distances. This project
+        built a spatial model to assign every street to its nearest lot while balancing demand.
       </p>
     </div>
   </section>
@@ -31,8 +30,8 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
       loading="lazy"
     />
     <p class="proj-map-caption">
-      Parking lot load index across Tel Aviv — circle size proportional to assigned resident demand.
-      Identifies overloaded lots and guides capacity planning.
+      Parking lot load index across Tel Aviv — circle size shows assigned demand, flagging
+      overloaded lots for capacity planning.
     </p>
     <img
       src={`${base}/maps/night-parking-service-area.jpg`}
@@ -49,11 +48,11 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
   <section class="proj-section">
     <h2 class="proj-section-title">Methodology</h2>
     <ul class="proj-list">
-      <li><strong>Street network:</strong> Extracted the pedestrian network from <strong>OpenStreetMap</strong> with <strong>OSMnx</strong>, weighting edges by real walking distance.</li>
-      <li><strong>Shortest-path assignment:</strong> Computed walking distances from every residential address to all lots using <strong>NetworkX</strong>, assigning each street to its closest option.</li>
-      <li><strong>Capacity balancing:</strong> Iteratively re-routed overflow demand to the next-nearest lot once capacity was reached — run across 12 synthesis rounds as new lots joined the policy.</li>
+      <li><strong>Street network:</strong> Extracted the pedestrian network from <strong>OpenStreetMap</strong> with <strong>OSMnx</strong>, weighted by real walking distance.</li>
+      <li><strong>Shortest-path assignment:</strong> Computed walking distances from every address to all lots with <strong>NetworkX</strong>, assigning each street to its closest option.</li>
+      <li><strong>Capacity balancing:</strong> Re-routed overflow demand to the next-nearest lot once capacity was reached, across 12 rounds as new lots joined.</li>
       <li><strong>Load index:</strong> Scored each lot by assigned demand relative to capacity, flagging those under pressure.</li>
-      <li><strong>Service areas:</strong> Derived lot catchment polygons directly from the assignment output, replacing the hand-drawn administrative boundaries.</li>
+      <li><strong>Service areas:</strong> Derived catchment polygons directly from the assignment output, replacing the hand-drawn boundaries.</li>
     </ul>
   </section>
 
@@ -62,8 +61,8 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
     <div class="proj-body">
       <p>
         The model's lot assignments and service-area boundaries were <strong>adopted into the
-        municipality's production system</strong>, replacing the hand-drawn administrative map and
-        becoming the operational basis for the policy citywide.
+        municipality's production system</strong> — replacing the hand-drawn map as the operational
+        basis for the policy citywide.
       </p>
     </div>
   </section>
