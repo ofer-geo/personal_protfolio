@@ -3,6 +3,53 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 
 const sections = [
   {
+    id: 'datascience',
+    label: 'Data Science & Analysis',
+    projects: [
+      {
+        title: "Cycling Infrastructure & Shared E-Scooter Behaviour — MSc Thesis",
+        desc: 'Master\'s thesis analysing ~1M shared e-scooter trips in Tel Aviv-Yafo to measure how cycling infrastructure shapes route choice, parking location and demand.',
+        tags: ['Python', 'GeoPandas', 'Map Matching', 'Statistical Analysis', 'GIS'],
+        thumb: `${base}/maps/thesis-route-vs-shortest-path.jpg`,
+        href: `${base}/projects/escooter-cycling-thesis`,
+      },
+      {
+        title: 'Predicting Bus Trip Performance with Machine Learning',
+        desc: 'XGBoost classifier predicting whether a bus trip runs early, on-time or delayed from GTFS, SIRI and weather data — built with Tamir Edelstein (Elia Transportation Engineering) for Bar-Ilan University\'s Data Science programme.',
+        tags: ['Python', 'XGBoost', 'SHAP', 'Optuna', 'scikit-learn'],
+        thumb: `${base}/maps/ml-bus-delay-roc-curves.jpg`,
+        href: `${base}/projects/bus-delay-prediction`,
+      },
+      {
+        title: 'Israel Train Stations Dashboard',
+        desc: 'Interactive Streamlit dashboard exploring passenger departure patterns across Israel Railways stations — built on open GTFS and government transport data, deployed live on Streamlit Community Cloud.',
+        tags: ['Python', 'Streamlit', 'Plotly', 'Folium', 'GTFS'],
+        thumb: `${base}/maps/train-stations-dashboard-overview.png`,
+        href: `${base}/projects/train-stations-dashboard`,
+      },
+    ],
+  },
+  {
+    id: 'gispm',
+    label: 'GIS Project Management',
+    projects: [
+      {
+        title: 'ZanSDI — Zanzibar Spatial Data Infrastructure',
+        desc: 'Technical Project Manager for Zanzibar\'s national geoportal: leading system design, development and capacity building for a World Bank–funded SDI built on GeoNode, GeoServer and PostGIS.',
+        tags: ['GeoNode', 'System Design', 'Team Leadership', 'Jira', 'Capacity Building'],
+        thumb: `${base}/maps/zansdi-landing-page.jpg`,
+        href: `${base}/projects/zansdi`,
+      },
+      {
+        title: 'Ogun SDI & LULC Mapping',
+        desc: 'Technical Project Manager for Ogun State\'s SDI and statewide Land Use/Land Cover mapping — directing the design of the Geom Tool and the OLARMS land-administration integration to meet the Bureau of Lands and Survey\'s workflow needs.',
+        tags: ['GeoNode', 'System Integration', 'Tool Design', 'LULC'],
+        thumb: `${base}/maps/ogun-sdi-web-map.jpg`,
+        href: `${base}/projects/ogun-sdi`,
+      },
+    ],
+  },
+  {
     id: 'maps',
     label: 'Maps & Geospatial Analysis',
     projects: [
@@ -47,53 +94,6 @@ const sections = [
         tags: ['Python', 'GTFS', 'GeoPandas', 'QGIS', 'Temporal Analysis'],
         thumb: `${base}/maps/freq-2023-2024.jpg`,
         href: `${base}/projects/service-frequency`,
-      },
-    ],
-  },
-  {
-    id: 'datascience',
-    label: 'Data Science & Analysis',
-    projects: [
-      {
-        title: "Cycling Infrastructure & Shared E-Scooter Behaviour — MSc Thesis",
-        desc: 'Master\'s thesis analysing ~1M shared e-scooter trips in Tel Aviv-Yafo to measure how cycling infrastructure shapes route choice, parking location and demand.',
-        tags: ['Python', 'GeoPandas', 'Map Matching', 'Statistical Analysis', 'GIS'],
-        thumb: `${base}/maps/thesis-route-vs-shortest-path.jpg`,
-        href: `${base}/projects/escooter-cycling-thesis`,
-      },
-      {
-        title: 'Predicting Bus Trip Performance with Machine Learning',
-        desc: 'XGBoost classifier predicting whether a bus trip runs early, on-time or delayed from GTFS, SIRI and weather data — built with Tamir Edelstein (Elia Transportation Engineering) for Bar-Ilan University\'s Data Science programme.',
-        tags: ['Python', 'XGBoost', 'SHAP', 'Optuna', 'scikit-learn'],
-        thumb: `${base}/maps/ml-bus-delay-roc-curves.jpg`,
-        href: `${base}/projects/bus-delay-prediction`,
-      },
-      {
-        title: 'Israel Train Stations Dashboard',
-        desc: 'Interactive Streamlit dashboard exploring passenger departure patterns across Israel Railways stations — built on open GTFS and government transport data, deployed live on Streamlit Community Cloud.',
-        tags: ['Python', 'Streamlit', 'Plotly', 'Folium', 'GTFS'],
-        thumb: `${base}/maps/train-stations-dashboard-overview.png`,
-        href: `${base}/projects/train-stations-dashboard`,
-      },
-    ],
-  },
-  {
-    id: 'gispm',
-    label: 'GIS Project Management',
-    projects: [
-      {
-        title: 'ZanSDI — Zanzibar Spatial Data Infrastructure',
-        desc: 'Technical Project Manager for Zanzibar\'s national geoportal: leading system design, development and capacity building for a World Bank–funded SDI built on GeoNode, GeoServer and PostGIS.',
-        tags: ['GeoNode', 'System Design', 'Stakeholder Mgmt', 'Capacity Building'],
-        thumb: `${base}/maps/zansdi-landing-page.jpg`,
-        href: `${base}/projects/zansdi`,
-      },
-      {
-        title: 'Ogun SDI & LULC Mapping',
-        desc: 'Technical Project Manager for Ogun State\'s SDI and statewide Land Use/Land Cover mapping — directing the design of the Geom Tool and the OLARMS land-administration integration to meet the Bureau of Lands and Survey\'s workflow needs.',
-        tags: ['GeoNode', 'System Integration', 'Tool Design', 'LULC'],
-        thumb: `${base}/maps/ogun-sdi-web-map.jpg`,
-        href: `${base}/projects/ogun-sdi`,
       },
     ],
   },
