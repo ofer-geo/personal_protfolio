@@ -1,5 +1,6 @@
 ---
 import ProjectLayout from '../../layouts/ProjectLayout.astro';
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 ---
 <ProjectLayout
   title="Israel Train Stations Dashboard"
@@ -15,6 +16,28 @@ import ProjectLayout from '../../layouts/ProjectLayout.astro';
       <li>Israel Railways publishes detailed open data on station activity, but exploring it station-by-station and period-by-period takes real digging.</li>
       <li>This project turns that raw open data into an interactive dashboard that lets anyone — planners, researchers or just curious commuters — explore <strong>passenger departure patterns</strong> across Israel's train stations without writing a line of code.</li>
     </ul>
+  </section>
+
+  <section class="proj-section">
+    <h2 class="proj-section-title">Screenshots</h2>
+    <img
+      src={`${base}/maps/train-stations-dashboard-overview.png`}
+      alt="Israel Train Stations Dashboard showing the station selector, date-range controls and a line chart of monthly average daily departures for Tel Aviv Ha'Hagana station"
+      class="proj-map"
+      loading="lazy"
+    />
+    <p class="proj-map-caption">
+      Station explorer view — pick a station and date range to see its average daily departures trend over time.
+    </p>
+    <img
+      src={`${base}/maps/train-stations-dashboard-detail.jpg`}
+      alt="Dashboard detail view showing a time-of-day departure share bar chart, a weekday distribution pie chart, and an embedded Folium map of the station location"
+      class="proj-map"
+      loading="lazy"
+    />
+    <p class="proj-map-caption">
+      Time-of-day and weekday distributions alongside an embedded map of the selected station's location.
+    </p>
   </section>
 
   <section class="proj-section">
