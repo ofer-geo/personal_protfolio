@@ -24,16 +24,6 @@ const contacts = [
 ---
 <aside class="sidebar">
 
-  <!-- Photo -->
-  <div class="sb-photo-wrap">
-    <div class="sb-photo" aria-label="Profile photo — replace with your image">
-      <svg viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-        <circle cx="40" cy="31" r="17" fill="#352D25"/>
-        <ellipse cx="40" cy="74" rx="30" ry="22" fill="#352D25"/>
-      </svg>
-    </div>
-  </div>
-
   <!-- Identity -->
   <div class="sb-identity">
     <h1 class="sb-name">Ofer Shahal</h1>
@@ -77,26 +67,6 @@ const contacts = [
 </aside>
 
 <style>
-/* Photo */
-.sb-photo-wrap {
-  display: flex;
-  justify-content: center;
-  margin-bottom: 20px;
-}
-.sb-photo {
-  width: 112px;
-  height: 112px;
-  border-radius: 50%;
-  background: var(--sb-hover);
-  border: 2px solid var(--sb-border);
-  overflow: hidden;
-  display: flex;
-  align-items: flex-end;
-  justify-content: center;
-  flex-shrink: 0;
-}
-.sb-photo svg { width: 80px; height: 80px; }
-
 /* Identity */
 .sb-identity {
   text-align: center;
@@ -180,9 +150,6 @@ a.sb-contact-value:hover { color: var(--sb-accent); }
 
 /* Mobile */
 @media (max-width: 860px) {
-  .sb-photo-wrap { margin-bottom: 0; }
-  .sb-photo { width: 68px; height: 68px; }
-  .sb-photo svg { width: 56px; }
   .sb-identity { text-align: left; margin-bottom: 0; }
   .sb-divider { display: none; }
   .sb-contacts { flex-direction: row; flex-wrap: wrap; gap: 8px 20px; }
