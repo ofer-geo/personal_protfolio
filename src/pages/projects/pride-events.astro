@@ -10,26 +10,13 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 >
 
   <section class="proj-section">
-    <h2 class="proj-section-title">Overview</h2>
+    <h2 class="proj-section-title">Background</h2>
     <div class="proj-body">
       <p>
-        Tel Aviv's Pride Parade is the city's largest annual street event, drawing hundreds of thousands
-        of participants and radically reshaping transportation demand across the central city. In the
-        hours surrounding the parade, shared e-scooter demand spikes dramatically — vehicles cluster
-        along the route and surrounding streets, while large sections of the city simultaneously lose
-        access due to road closures and temporary parking restrictions.
-      </p>
-      <p>
-        This analysis used real-time fleet data from the Populus platform to map where shared
-        e-scooters were available and where demand concentrated during the parade's peak hour.
-        Fleet distribution maps were overlaid with temporary parking restriction zones issued for the
-        event, revealing gaps between where vehicles were parked and where riders needed them.
-      </p>
-      <p>
-        Findings helped operators understand spatial mismatches ahead of future events and supported
-        the municipality's pre-positioning negotiations with operators. The density maps also identified
-        streets where parking restrictions created effective no-go zones without compensating supply
-        in adjacent areas.
+        Tel Aviv's Pride Parade is the city's largest annual street event — and for a few hours it
+        completely upends transportation demand downtown. Riders cluster along the route while road
+        closures and parking restrictions cut large parts of the city off from shared e-scooter access.
+        This analysis mapped exactly where that mismatch happened during the parade's peak hour.
       </p>
     </div>
   </section>
@@ -59,20 +46,49 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
   </section>
 
   <section class="proj-section">
-    <h2 class="proj-section-title">Methods</h2>
+    <h2 class="proj-section-title">Methodology</h2>
+    <ul class="proj-list">
+      <li>Filtered real-time fleet feeds from <strong>Populus</strong> to the event's peak-hour window and processed them into point-in-time snapshots with <strong>Python</strong> and <strong>Pandas</strong>.</li>
+      <li>Joined vehicle locations to a spatial grid and to municipal parking-restriction polygons (GeoJSON) using <strong>GeoPandas</strong>.</li>
+      <li>Generated <strong>KDE</strong> density surfaces for both vehicle supply and trip-origin demand, then visualized both in <strong>QGIS</strong> at matched scales for direct comparison.</li>
+    </ul>
+  </section>
+
+  <section class="proj-section">
+    <h2 class="proj-section-title">Results</h2>
     <div class="proj-body">
       <p>
-        Raw Populus status-change data was filtered to the event's peak-hour window and processed
-        into point-in-time vehicle snapshots using Python and Pandas. Vehicle locations were then
-        joined to a grid layer and to parking restriction polygons (provided by the municipality as
-        GeoJSON) to identify restricted and unrestricted availability zones.
-      </p>
-      <p>
-        Density surfaces were generated using KDE on vehicle coordinates, and trip origin data from
-        the same hour provided a demand reference layer. Both layers were visualized in QGIS with
-        matched scales and extents to enable direct comparison between supply and demand patterns.
+        The maps exposed clear gaps between where scooters were parked and where riders actually
+        needed them — including streets where parking restrictions created effective no-go zones with
+        no compensating supply nearby. The findings fed directly into the municipality's pre-positioning
+        negotiations with operators ahead of future events.
       </p>
     </div>
   </section>
 
 </ProjectLayout>
+
+<style>
+  :global(.proj-list) {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    max-width: 68ch;
+  }
+  :global(.proj-list li) {
+    font-size: 0.9rem;
+    line-height: 1.7;
+    color: #2A2A2A;
+    padding-left: 1.2em;
+    position: relative;
+  }
+  :global(.proj-list li::before) {
+    content: '—';
+    position: absolute;
+    left: 0;
+    color: #3D5E35;
+    font-weight: 600;
+  }
+</style>

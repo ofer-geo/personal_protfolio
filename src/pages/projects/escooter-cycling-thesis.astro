@@ -11,13 +11,18 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 >
 
   <section class="proj-section">
-    <h2 class="proj-section-title">Overview</h2>
-    <ul class="proj-list">
-      <li>Shared dockless e-scooters (SDES) became a major part of urban mobility in just a few years — but it's still an open question how the built environment, and cycling infrastructure in particular, shapes the way people actually ride and park them.</li>
-      <li>This thesis investigates the relationship between cycling infrastructure and SDES usage in Tel Aviv-Yafo, working with roughly <strong>1 million trips and 2 million vehicle status transitions</strong> recorded across the city in July 2023.</li>
-      <li>The central question: do riders simply take the shortest route to their destination, or do they go out of their way to ride near bike lanes — and does that preference also show up in where vehicles are parked and in demand patterns?</li>
-      <li>The findings point toward practical implications for SDES parking policy and for how cities plan and prioritise cycling infrastructure.</li>
-    </ul>
+    <h2 class="proj-section-title">Background</h2>
+    <div class="proj-body">
+      <p>
+        Shared dockless e-scooters became a fixture of urban mobility within a few years — but how the
+        built environment, and cycling infrastructure especially, shapes the way people actually ride
+        and park them is still an open question. This MSc thesis investigated that relationship in
+        Tel Aviv-Yafo using roughly <strong>1 million trips and 2 million vehicle status transitions</strong>
+        recorded in July 2023, asking whether riders take the shortest route home or go out of their
+        way to stay near bike lanes — and whether that preference shows up in parking and demand
+        patterns too.
+      </p>
+    </div>
   </section>
 
   <section class="proj-section">
@@ -45,27 +50,28 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
   </section>
 
   <section class="proj-section">
-    <h2 class="proj-section-title">What the Analysis Did, in General Terms</h2>
+    <h2 class="proj-section-title">Methodology</h2>
     <ul class="proj-list">
-      <li><strong>Data:</strong> Two raw datasets — anonymised trip records and vehicle status-change logs — were sourced from the operators' shared-mobility feeds (in the standard MDS format used by municipalities), then cleaned to remove unreliable, circular or non-representative rides.</li>
-      <li><strong>Route choice vs. shortest path:</strong> Each trip's recorded route was map-matched onto the OpenStreetMap street network, and compared against the computed shortest-path alternative between the same origin and destination — letting the analysis measure exactly how much (and where) riders deviated from the most direct way home.</li>
-      <li><strong>Cycling infrastructure exposure:</strong> The ~175 km of bike lanes mapped across Tel Aviv-Yafo (as of July 2023) were overlaid on both the chosen routes and the shortest-path alternatives, to see whether riders' actual paths ran along bike lanes more often than the "optimal" path would.</li>
-      <li><strong>Parking & demand patterns:</strong> Vehicle status-change events (where and when scooters start and end "parked" periods) were spatially joined to the bike-lane network and to the city's neighbourhoods and traffic zones, to test whether supply and demand cluster near cycling infrastructure more than chance would predict.</li>
+      <li>Cleaned and prepared two raw <strong>MDS-format</strong> datasets — anonymised trip records and vehicle status-change logs — sourced from operators' shared-mobility feeds.</li>
+      <li><strong>Map-matched</strong> each recorded route onto the <strong>OpenStreetMap</strong> network with <strong>OSMnx</strong> and computed its shortest-path alternative, measuring exactly how much (and where) riders deviated from the most direct way.</li>
+      <li>Overlaid the city's ~175 km of mapped bike lanes onto both chosen and shortest-path routes to test whether riders' actual paths ran along cycling infrastructure more than the optimal path would.</li>
+      <li>Spatially joined vehicle parking events to the bike-lane network, neighbourhoods and traffic zones with <strong>GeoPandas</strong>, then ran statistical tests to check whether supply and demand cluster near cycling infrastructure more than chance would predict.</li>
     </ul>
   </section>
 
   <section class="proj-section">
-    <h2 class="proj-section-title">Key Findings</h2>
-    <ul class="proj-list">
-      <li>On average, riders extended their route by about <strong>9% beyond the shortest path</strong> — and the longer the trip, the larger that detour tended to be.</li>
-      <li>Chosen routes consistently carried a <strong>higher share of cycling infrastructure</strong> than the equivalent shortest-path alternative would, suggesting that many riders actively route themselves toward bike lanes rather than simply taking the fastest way.</li>
-      <li>Parking events — where vehicles are picked up and dropped off — were <strong>concentrated near bike lanes at roughly twice the rate</strong> a random distribution across the city's open public space would produce, with both supply and demand higher (and average parking duration shorter) the closer a location sits to cycling infrastructure.</li>
-      <li>A closer look at specific locations showed that <em>how well-connected</em> a bike lane is to a destination matters: where the lane runs right past a point of interest, vehicles cluster tightly along it; where it's harder to reach (e.g. on the far side of a busy street), riders are more likely to start or end their ride closer to the destination itself, even if that means leaving the lane.</li>
-    </ul>
-  </section>
-
-  <section class="proj-section">
-    <h2 class="proj-section-title">Results in Charts</h2>
+    <h2 class="proj-section-title">Results</h2>
+    <div class="proj-body">
+      <p>
+        Riders extended their routes by about <strong>9% beyond the shortest path</strong> on average —
+        and longer trips saw bigger detours. Chosen routes consistently carried a higher share of
+        cycling infrastructure than the shortest-path alternative would, and parking events clustered
+        near bike lanes at <strong>roughly twice the rate</strong> random chance would produce. A
+        closer look showed that how well a bike lane connects to a destination matters: well-connected
+        lanes drew tight vehicle clusters, while harder-to-reach lanes saw riders peel off toward the
+        destination itself.
+      </p>
+    </div>
     <img
       src={`${base}/maps/thesis-bike-share-chosen-vs-shortest.png`}
       alt="Line chart titled 'Share of links with a bike path' comparing the chosen route (blue, 50–63%) against the shortest path (green, 38–45%) across route-length bands from under 1km to over 5km"

@@ -10,28 +10,14 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 >
 
   <section class="proj-section">
-    <h2 class="proj-section-title">Overview</h2>
+    <h2 class="proj-section-title">Background</h2>
     <div class="proj-body">
       <p>
-        Tel Aviv's curbside parking is divided into three categories: blue-and-white paid zones,
-        free white-line spaces, and newly introduced grey regulated areas. The city's ongoing
-        rollout of paid parking is politically charged — the distribution of who absorbs parking costs
-        maps closely onto neighborhood demographics and proximity to the city center.
-      </p>
-      <p>
-        This analysis joined parking space inventories to neighborhood boundaries, computing
-        the share of paid versus free parking for each neighborhood across the city. Rather than
-        framing it as a technical inventory, the maps were designed to answer a policy question:
-        is the burden of paid parking falling equitably, or is it concentrated in particular parts
-        of the city?
-      </p>
-      <p>
-        Multiple palette and classification variants were produced for different audiences — detailed
-        graduated maps for technical review, and simplified three-color versions for committee
-        presentations. The maps revealed stark spatial variation: central neighborhoods are
-        predominantly paid, while peripheral neighborhoods retain large shares of free curbside access.
-        This portrait underpins ongoing policy discussions about the pace and geography of further
-        pricing rollout.
+        Tel Aviv's curbside parking splits into paid (blue-and-white), free (white-line) and newly
+        introduced grey regulated zones — and the rollout of paid parking is politically sensitive,
+        since who absorbs the cost tracks closely with neighborhood demographics and distance from
+        the center. This project mapped that distribution to answer a policy question directly: is
+        the burden of paid parking falling evenly across the city?
       </p>
     </div>
   </section>
@@ -61,21 +47,48 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
   </section>
 
   <section class="proj-section">
-    <h2 class="proj-section-title">Methods</h2>
+    <h2 class="proj-section-title">Methodology</h2>
+    <ul class="proj-list">
+      <li>Spatially joined the municipal parking-space inventory to neighborhood boundaries with <strong>GeoPandas</strong>, computing the share of paid vs. free spaces per neighborhood.</li>
+      <li>Built <strong>choropleth maps</strong> in <strong>QGIS</strong> using <strong>Jenks natural-breaks classification</strong> for technical review, plus simplified manual-break versions for committee presentations.</li>
+      <li>Tested multiple color palettes for perceptual clarity, validating the final selections for color-vision-deficiency accessibility.</li>
+    </ul>
+  </section>
+
+  <section class="proj-section">
+    <h2 class="proj-section-title">Results</h2>
     <div class="proj-body">
       <p>
-        Parking space data was sourced from the municipal parking inventory, containing each
-        space's type (blue/white, white, grey) and location. Spaces were spatially joined to
-        neighborhood polygons using GeoPandas, and summary statistics — total spaces, spaces by
-        type, and type shares — were computed per neighborhood.
-      </p>
-      <p>
-        Choropleth maps were produced in QGIS using Jenks natural-breaks classification for the
-        technical variants and manual breaks for the simplified committee versions. Multiple color
-        palettes were tested for perceptual clarity and accessibility, with the selected palettes
-        validated for color-vision deficiency compatibility.
+        The pattern was stark: central neighborhoods are overwhelmingly paid, while peripheral areas
+        retain large shares of free curbside access. That spatial portrait now underpins ongoing
+        committee discussions about the pace and geography of the next phase of paid-parking rollout.
       </p>
     </div>
   </section>
 
 </ProjectLayout>
+
+<style>
+  :global(.proj-list) {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    max-width: 68ch;
+  }
+  :global(.proj-list li) {
+    font-size: 0.9rem;
+    line-height: 1.7;
+    color: #2A2A2A;
+    padding-left: 1.2em;
+    position: relative;
+  }
+  :global(.proj-list li::before) {
+    content: '—';
+    position: absolute;
+    left: 0;
+    color: #3D5E35;
+    font-weight: 600;
+  }
+</style>

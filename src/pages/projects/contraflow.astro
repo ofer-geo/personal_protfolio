@@ -10,27 +10,14 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 >
 
   <section class="proj-section">
-    <h2 class="proj-section-title">Overview</h2>
+    <h2 class="proj-section-title">Background</h2>
     <div class="proj-body">
       <p>
-        The Florentine neighborhood in south Tel Aviv is characterized by narrow, dense one-way streets —
-        a common feature of older urban fabric built before the car. As shared e-scooter adoption grew
-        rapidly across the city, anecdotal evidence and enforcement reports suggested riders were
-        frequently traveling against designated traffic direction, raising serious safety concerns for
-        both riders and other road users.
-      </p>
-      <p>
-        This analysis used raw GPS trip data from the Populus mobility data platform to systematically
-        identify scooter trips that conflicted with street directionality. Each recorded trip trajectory
-        was overlaid against a street network derived from OpenStreetMap, with directional attributes
-        assigned per segment. Spatial joins between trip routes and one-way segments allowed precise
-        quantification of contraflow riding — by street, by time of day, and by operator.
-      </p>
-      <p>
-        Results revealed significant contraflow concentration on specific corridors, providing actionable
-        spatial intelligence for enforcement prioritization. The findings also informed infrastructure
-        proposals: streets with the highest contraflow rates were cross-referenced with cycling
-        infrastructure plans, identifying candidates for formal contra-flow bike lane designation.
+        Tel Aviv's Florentine neighborhood is a dense grid of narrow one-way streets — typical of older
+        urban fabric built before the car. As shared e-scooters spread through the city, enforcement
+        reports pointed to riders frequently traveling against traffic direction, raising safety concerns
+        for riders and pedestrians alike. This analysis set out to measure exactly how much contraflow
+        riding was happening, where, and by whom.
       </p>
     </div>
   </section>
@@ -50,21 +37,50 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
   </section>
 
   <section class="proj-section">
-    <h2 class="proj-section-title">Methods</h2>
+    <h2 class="proj-section-title">Methodology</h2>
+    <ul class="proj-list">
+      <li>Pulled raw GPS trip data from the <strong>Populus</strong> mobility platform and street geometry with directional attributes from <strong>OpenStreetMap</strong>.</li>
+      <li>Used <strong>GeoPandas</strong> and <strong>Shapely</strong> to map-match each trip trajectory to its street segment and compare travel bearing against the segment's permitted direction.</li>
+      <li>Flagged a trip as contraflow when its bearing deviated beyond a defined angular threshold — filtering out GPS noise — then aggregated results by street, time of day and operator.</li>
+      <li>Produced final cartography and classification in <strong>QGIS</strong>.</li>
+    </ul>
+  </section>
+
+  <section class="proj-section">
+    <h2 class="proj-section-title">Results</h2>
     <div class="proj-body">
       <p>
-        Trip GPS traces were matched to street segments using GeoPandas and Shapely geometric operations.
-        Street directionality (oneway attributes) was extracted from OpenStreetMap and validated against
-        municipal street data. A trip segment was classified as contraflow when its bearing conflicted
-        with the permitted travel direction of the matched street segment by more than a defined angular
-        threshold, filtering out GPS noise.
-      </p>
-      <p>
-        Results were aggregated by street segment to produce a contraflow intensity surface, and by
-        operator and time band to support operational recommendations. All analysis was conducted in
-        Python with QGIS used for final cartographic output.
+        Contraflow riding concentrated heavily on a handful of corridors — giving enforcement teams a
+        precise, prioritized target list instead of a citywide guess. Cross-referencing those corridors
+        with the city's cycling infrastructure plans also surfaced strong candidates for new contraflow
+        bike lanes, turning a safety problem into an infrastructure opportunity.
       </p>
     </div>
   </section>
 
 </ProjectLayout>
+
+<style>
+  :global(.proj-list) {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    max-width: 68ch;
+  }
+  :global(.proj-list li) {
+    font-size: 0.9rem;
+    line-height: 1.7;
+    color: #2A2A2A;
+    padding-left: 1.2em;
+    position: relative;
+  }
+  :global(.proj-list li::before) {
+    content: '—';
+    position: absolute;
+    left: 0;
+    color: #3D5E35;
+    font-weight: 600;
+  }
+</style>

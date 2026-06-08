@@ -10,25 +10,13 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 >
 
   <section class="proj-section">
-    <h2 class="proj-section-title">Overview</h2>
+    <h2 class="proj-section-title">Background</h2>
     <div class="proj-body">
       <p>
-        Service frequency — how often a bus arrives — is one of the most direct measures of
-        public transport quality. For riders, a bus that comes every 8 minutes versus every 20 minutes
-        is the difference between a usable service and one you have to plan around. Tracking how
-        frequency changes over time, and where, reveals which areas are getting better service and
-        which are being left behind.
-      </p>
-      <p>
-        This analysis used GTFS (General Transit Feed Specification) data to compute average
-        headways by route segment across three time periods: 2022, 2023, and 2024. Changes in
-        frequency were mapped at the route-segment level, using a diverging color scheme to clearly
-        distinguish improvements (more frequent service) from degradations (less frequent service).
-      </p>
-      <p>
-        The year-over-year maps revealed both system-wide trends and localized changes tied to
-        specific route restructurings and the ongoing integration of the new light rail network,
-        which absorbed some bus demand while triggering adjustments to connecting routes.
+        How often a bus arrives is one of the clearest measures of public-transport quality — the
+        gap between an 8-minute and a 20-minute headway is the difference between a service people
+        can rely on and one they have to plan around. This project tracked how Tel Aviv's bus
+        frequency shifted between 2022 and 2024, and where.
       </p>
     </div>
   </section>
@@ -65,20 +53,48 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
   </section>
 
   <section class="proj-section">
-    <h2 class="proj-section-title">Methods</h2>
+    <h2 class="proj-section-title">Methodology</h2>
+    <ul class="proj-list">
+      <li>Processed three years of <strong>GTFS</strong> feeds in <strong>Python</strong> to compute average headways by route segment and time period (AM peak, PM peak, off-peak).</li>
+      <li>Matched segments across years by route identifier and calculated the year-over-year change in headway as the core metric.</li>
+      <li>Joined route geometries from GTFS shape files to the computed deltas with <strong>GeoPandas</strong>, then built diverging <strong>choropleth maps</strong> in <strong>QGIS</strong> with a neutral midpoint at zero change.</li>
+    </ul>
+  </section>
+
+  <section class="proj-section">
+    <h2 class="proj-section-title">Results</h2>
     <div class="proj-body">
       <p>
-        GTFS feeds were processed in Python to extract scheduled trip frequencies by route and
-        time period (AM peak, PM peak, off-peak). Average headways were computed per route segment
-        for each year. Segments were matched across years using route identifiers, and the delta
-        in headway was calculated as the primary change metric.
-      </p>
-      <p>
-        Route geometries from the GTFS shapes files were joined with the computed headway changes
-        using GeoPandas. Diverging choropleth maps were produced in QGIS with a neutral midpoint
-        at zero change, allowing direct visual comparison of the three periods.
+        The year-over-year maps surfaced both citywide trends and localized shifts tied to specific
+        route restructurings — most notably the integration of the new light rail network, which
+        absorbed bus demand on some corridors while triggering frequency gains on connecting trunk routes.
       </p>
     </div>
   </section>
 
 </ProjectLayout>
+
+<style>
+  :global(.proj-list) {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    max-width: 68ch;
+  }
+  :global(.proj-list li) {
+    font-size: 0.9rem;
+    line-height: 1.7;
+    color: #2A2A2A;
+    padding-left: 1.2em;
+    position: relative;
+  }
+  :global(.proj-list li::before) {
+    content: '—';
+    position: absolute;
+    left: 0;
+    color: #3D5E35;
+    font-weight: 600;
+  }
+</style>

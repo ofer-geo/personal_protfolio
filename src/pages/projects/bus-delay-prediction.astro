@@ -11,21 +11,26 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 >
 
   <section class="proj-section">
-    <h2 class="proj-section-title">Objective</h2>
-    <ul class="proj-list">
-      <li>Bus reliability is one of the biggest factors shaping whether people choose public transport — yet operators and planners often only learn a line is unreliable after the fact.</li>
-      <li>This project, built as part of <strong>Bar-Ilan University's Data Science programme</strong> together with <strong>Tamir Edelstein</strong> of <strong>Elia Transportation Engineering Ltd.</strong>, set out to predict — before or during a trip — whether a bus would arrive <em>early</em>, <em>on time</em>, or <em>delayed</em>.</li>
-      <li>A model that can flag high-risk trips in advance gives operators a practical tool for proactive schedule adjustments, dispatching decisions and rider communication.</li>
-    </ul>
+    <h2 class="proj-section-title">Background</h2>
+    <div class="proj-body">
+      <p>
+        Bus reliability is one of the biggest factors shaping whether people choose public transport —
+        yet operators often only learn a line is unreliable after the fact. Built as part of
+        <strong>Bar-Ilan University's Data Science programme</strong> with <strong>Tamir Edelstein</strong>
+        of <strong>Elia Transportation Engineering Ltd.</strong>, this project set out to predict —
+        before or during a trip — whether a bus would arrive <em>early</em>, <em>on time</em>, or
+        <em>delayed</em>, giving operators a tool for proactive scheduling and dispatching decisions.
+      </p>
+    </div>
   </section>
 
   <section class="proj-section">
-    <h2 class="proj-section-title">Data & Approach, in General Terms</h2>
+    <h2 class="proj-section-title">Methodology</h2>
     <ul class="proj-list">
-      <li><strong>Data sources:</strong> Real-time vehicle positions and trip records from the SIRI API, scheduled timetables (GTFS), passenger activity counts, weather records and GIS layers describing the route network — merged into a single trip-level dataset.</li>
-      <li><strong>Features:</strong> Combined <em>temporal</em> signals (peak hours, time of day, day of week), <em>spatial</em> signals (route length, curvature, share of the route running on dedicated public-transport infrastructure), <em>operational</em> signals (passenger demand, number of stops, vehicles per line) and <em>historical</em> probability-based features capturing how that line/segment has performed before.</li>
-      <li><strong>Modelling:</strong> Logistic Regression, Random Forest, LightGBM and XGBoost were trained and compared as a three-class classifier (early / on-time / delay). Class imbalance — most trips run on time or are delayed, far fewer run early — was addressed with SMOTE resampling, and the final model's hyperparameters were tuned with Optuna.</li>
-      <li><strong>Explainability:</strong> SHAP values were used to understand which features actually drive each prediction, rather than treating the model as a black box — important for a tool meant to support real operational decisions.</li>
+      <li>Merged real-time vehicle positions and trip records from the <strong>SIRI API</strong> with <strong>GTFS</strong> timetables, passenger counts, weather data and route-network GIS layers into a single trip-level dataset.</li>
+      <li>Engineered temporal, spatial, operational and historical-probability features capturing how each line and segment had performed before.</li>
+      <li>Trained and compared <strong>Logistic Regression</strong>, <strong>Random Forest</strong>, <strong>LightGBM</strong> and <strong>XGBoost</strong> as a three-class classifier, addressing class imbalance with <strong>SMOTE</strong> and tuning the final model with <strong>Optuna</strong>.</li>
+      <li>Used <strong>SHAP</strong> values to explain predictions feature-by-feature, rather than treating the model as a black box.</li>
     </ul>
   </section>
 
@@ -52,9 +57,9 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
       by hour, and arrival hour emerge as the strongest drivers of a delay prediction.
     </p>
     <ul class="proj-list">
-      <li>The selected <strong>XGBoost classifier</strong> reached roughly <strong>83% overall accuracy</strong> on the held-out test set — a clear improvement over the "always predict the most frequent class" baseline (~74%, with almost no ability to catch "early" or "on-time" trips).</li>
-      <li>It performed strongly on the operationally critical <strong>delay class</strong> (precision 0.86, recall 0.94, F1 ≈ 0.90), making it well suited to flagging the trips that matter most for proactive intervention.</li>
-      <li>Distinguishing "early" from "on-time" trips remained the hardest part of the problem — both are much rarer than delays and easy to confuse with each other, a limitation the project documents openly as a direction for further work (e.g. richer historical features, finer time resolution).</li>
+      <li>The selected <strong>XGBoost</strong> classifier reached roughly <strong>83% accuracy</strong> — well above the ~74% "always predict the most common class" baseline — and performed especially strongly on the operationally critical delay class (precision 0.86, recall 0.94).</li>
+      <li><strong>SHAP</strong> analysis showed that line identity, historical on-time probability by hour, and time of day were the strongest predictors of delay.</li>
+      <li>Distinguishing "early" from "on-time" trips remained the hardest part of the problem — both are rare and easy to confuse, a limitation the project documents as a direction for further work.</li>
     </ul>
   </section>
 

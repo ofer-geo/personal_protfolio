@@ -10,27 +10,13 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 >
 
   <section class="proj-section">
-    <h2 class="proj-section-title">Overview</h2>
+    <h2 class="proj-section-title">Background</h2>
     <div class="proj-body">
       <p>
-        Shared micro-mobility operators promised to extend accessible transportation beyond the city
-        center. In practice, commercial incentives push vehicles toward high-density, high-demand zones —
-        concentrating supply in central neighborhoods and leaving peripheral quarters underserved.
-        This analysis investigated whether shared e-scooter availability was equitably distributed
-        across Tel Aviv's outer quarters.
-      </p>
-      <p>
-        Using vehicle location snapshots from multiple operators collected via the Populus platform,
-        kernel density estimation (KDE) was applied to model spatial availability patterns across the
-        entire city. Results were aggregated to Traffic Analysis Zones (TAZ) to enable structured
-        neighborhood-level comparison and expose supply-demand mismatches that raw counts would obscure.
-      </p>
-      <p>
-        The analysis of Quarter 7 — one of the city's more peripheral and socioeconomically mixed
-        quarters — revealed a pronounced deficit: despite significant trip origin activity in the area,
-        vehicle availability was substantially lower than in central quarters at equivalent demand levels.
-        This evidence base directly supported arguments for redistribution requirements in operator
-        licensing discussions.
+        Shared e-scooter operators promised mobility access beyond the city center, but commercial
+        incentives naturally pull fleets toward dense, high-demand zones — leaving peripheral
+        neighborhoods underserved. This analysis tested whether that imbalance was actually happening
+        in Tel Aviv's outer quarters, focusing on Quarter 7, a peripheral and socioeconomically mixed area.
       </p>
     </div>
   </section>
@@ -60,21 +46,49 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
   </section>
 
   <section class="proj-section">
-    <h2 class="proj-section-title">Methods</h2>
+    <h2 class="proj-section-title">Methodology</h2>
+    <ul class="proj-list">
+      <li>Compiled vehicle-location snapshots from multiple operators via the <strong>Populus</strong> platform.</li>
+      <li>Modeled citywide availability with <strong>Kernel Density Estimation</strong> in <strong>SciPy</strong>, selecting bandwidth through cross-validation to balance smoothing against resolution.</li>
+      <li>Aggregated density surfaces to <strong>Traffic Analysis Zones (TAZ)</strong> with <strong>GeoPandas</strong> spatial joins, then computed a supply-vs-demand ratio per zone using trip-origin density as a demand proxy.</li>
+      <li>Produced final classification and cartography in <strong>QGIS</strong>.</li>
+    </ul>
+  </section>
+
+  <section class="proj-section">
+    <h2 class="proj-section-title">Results</h2>
     <div class="proj-body">
       <p>
-        Vehicle location data was processed from raw Populus status-change feeds into time-stamped
-        availability snapshots. SciPy's Gaussian KDE was applied to vehicle coordinates to generate a
-        continuous density surface, using bandwidth selected via cross-validation to balance
-        smoothing against spatial resolution.
-      </p>
-      <p>
-        Density surfaces were rasterized and intersected with TAZ boundaries using GeoPandas spatial
-        joins, enabling zonal statistics by planning area. A demand proxy — trip origin density from
-        the same period — was computed in parallel and compared with availability density to derive
-        a supply-demand ratio per TAZ. QGIS was used for symbology, classification, and final map output.
+        Quarter 7 showed a clear deficit: despite strong trip-origin activity, vehicle availability
+        lagged well behind central quarters facing comparable demand. That evidence became a direct
+        input to the redistribution requirements discussed in the city's operator-licensing process.
       </p>
     </div>
   </section>
 
 </ProjectLayout>
+
+<style>
+  :global(.proj-list) {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    max-width: 68ch;
+  }
+  :global(.proj-list li) {
+    font-size: 0.9rem;
+    line-height: 1.7;
+    color: #2A2A2A;
+    padding-left: 1.2em;
+    position: relative;
+  }
+  :global(.proj-list li::before) {
+    content: '—';
+    position: absolute;
+    left: 0;
+    color: #3D5E35;
+    font-weight: 600;
+  }
+</style>

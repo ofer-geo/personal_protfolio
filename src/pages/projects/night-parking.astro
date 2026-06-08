@@ -10,13 +10,16 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 >
 
   <section class="proj-section">
-    <h2 class="proj-section-title">Objective</h2>
-    <ul class="proj-list">
-      <li>Tel Aviv's "Near-Home Parking" policy gives residents priority overnight access to municipal off-street parking lots close to their homes.</li>
-      <li>As the policy expanded, a key planning question arose: <strong>which streets should be assigned to which parking lot?</strong> Manual, administratively drawn boundaries were inconsistent and ignored real walking distances.</li>
-      <li>The goal was to build a spatial model that assigns every residential street to the nearest available lot — minimizing walking distance while balancing demand across all participating lots.</li>
-      <li>The final model and assignments were <strong>adopted into the municipality's production system</strong> and now serve as the operational basis for the policy.</li>
-    </ul>
+    <h2 class="proj-section-title">Background</h2>
+    <div class="proj-body">
+      <p>
+        Tel Aviv's "Near-Home Parking" policy gives residents priority overnight access to municipal
+        lots near their homes. As the policy expanded, the city faced a concrete planning question —
+        which streets should be assigned to which lot? The existing boundaries were drawn by hand and
+        ignored real walking distances, so this project built a spatial model to assign every street to
+        its nearest available lot while balancing demand across the network.
+      </p>
+    </div>
   </section>
 
   <section class="proj-section">
@@ -46,12 +49,23 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
   <section class="proj-section">
     <h2 class="proj-section-title">Methodology</h2>
     <ul class="proj-list">
-      <li><strong>Street network:</strong> The pedestrian road network was extracted from OpenStreetMap using OSMnx, with edge weights set to real walking distances.</li>
-      <li><strong>Shortest-path assignment:</strong> For each residential address, walking distances to all participating lots were computed using NetworkX. Each street was assigned to its closest lot.</li>
-      <li><strong>Capacity constraints:</strong> When a lot reached capacity, overflow demand was re-assigned to the next-nearest available lot — implemented as an iterative allocation loop run across 12 synthesis rounds as new lots joined the policy.</li>
-      <li><strong>Load index:</strong> Each lot received a load score combining the number of assigned streets and estimated resident demand, normalized against lot capacity — flagging lots under pressure.</li>
-      <li><strong>Service areas:</strong> Lot catchment polygons were derived from the assignment output, replacing the hand-drawn administrative boundaries previously used for the policy.</li>
+      <li><strong>Street network:</strong> Extracted the pedestrian network from <strong>OpenStreetMap</strong> with <strong>OSMnx</strong>, weighting edges by real walking distance.</li>
+      <li><strong>Shortest-path assignment:</strong> Computed walking distances from every residential address to all lots using <strong>NetworkX</strong>, assigning each street to its closest option.</li>
+      <li><strong>Capacity balancing:</strong> Iteratively re-routed overflow demand to the next-nearest lot once capacity was reached — run across 12 synthesis rounds as new lots joined the policy.</li>
+      <li><strong>Load index:</strong> Scored each lot by assigned demand relative to capacity, flagging those under pressure.</li>
+      <li><strong>Service areas:</strong> Derived lot catchment polygons directly from the assignment output, replacing the hand-drawn administrative boundaries.</li>
     </ul>
+  </section>
+
+  <section class="proj-section">
+    <h2 class="proj-section-title">Results</h2>
+    <div class="proj-body">
+      <p>
+        The model's lot assignments and service-area boundaries were <strong>adopted into the
+        municipality's production system</strong>, replacing the hand-drawn administrative map and
+        becoming the operational basis for the policy citywide.
+      </p>
+    </div>
   </section>
 
 </ProjectLayout>
