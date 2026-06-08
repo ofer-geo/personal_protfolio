@@ -54,7 +54,27 @@ const sections = [
     id: 'datascience',
     label: 'Data Science & Analysis',
     projects: [
-      { title: 'Coming soon', desc: '', tags: [], thumb: null, href: null },
+      {
+        title: "Cycling Infrastructure & Shared E-Scooter Behaviour — MSc Thesis",
+        desc: 'Master\'s thesis analysing ~1M shared e-scooter trips in Tel Aviv-Yafo to measure how cycling infrastructure shapes route choice, parking location and demand.',
+        tags: ['Python', 'GeoPandas', 'Map Matching', 'Statistical Analysis', 'GIS'],
+        thumb: `${base}/maps/thesis-route-vs-shortest-path.jpg`,
+        href: `${base}/projects/escooter-cycling-thesis`,
+      },
+      {
+        title: 'Predicting Bus Trip Delays with Machine Learning',
+        desc: 'XGBoost classifier predicting whether a bus trip runs early, on-time or delayed from GTFS, SIRI and weather data — built with Tamir Edelstein (Elia Transportation Engineering) for Bar-Ilan University\'s Data Science programme.',
+        tags: ['Python', 'XGBoost', 'SHAP', 'Optuna', 'scikit-learn'],
+        thumb: `${base}/maps/ml-bus-delay-roc-curves.jpg`,
+        href: `${base}/projects/bus-delay-prediction`,
+      },
+      {
+        title: 'Israel Train Stations Dashboard',
+        desc: 'Interactive Streamlit dashboard exploring passenger departure patterns across Israel Railways stations — built on open GTFS and government transport data, deployed live on Streamlit Community Cloud.',
+        tags: ['Python', 'Streamlit', 'Plotly', 'Folium', 'GTFS'],
+        thumb: null,
+        href: `${base}/projects/train-stations-dashboard`,
+      },
     ],
   },
   {
@@ -90,9 +110,11 @@ const sections = [
         {section.projects.map(project => (
           project.href ? (
             <a href={project.href} class="card port-card port-card-link">
-              <div class="port-thumb">
-                <img src={project.thumb!} alt={project.title} loading="lazy" />
-              </div>
+              {project.thumb && (
+                <div class="port-thumb">
+                  <img src={project.thumb} alt={project.title} loading="lazy" />
+                </div>
+              )}
               <div class="port-card-body">
                 <h4 class="port-card-title">{project.title}</h4>
                 <p class="port-card-desc">{project.desc}</p>

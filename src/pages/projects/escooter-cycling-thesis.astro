@@ -1,0 +1,124 @@
+---
+import ProjectLayout from '../../layouts/ProjectLayout.astro';
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+---
+<ProjectLayout
+  title="Cycling Infrastructure & Shared E-Scooter Behaviour"
+  year="2025"
+  section="Data Science & Analysis"
+  category="MSc Thesis · Tel Aviv University"
+  tools={['Python', 'GeoPandas', 'OSMnx', 'Map Matching', 'Statistical Analysis', 'QGIS']}
+>
+
+  <section class="proj-section">
+    <h2 class="proj-section-title">Overview</h2>
+    <ul class="proj-list">
+      <li>Shared dockless e-scooters (SDES) became a major part of urban mobility in just a few years — but it's still an open question how the built environment, and cycling infrastructure in particular, shapes the way people actually ride and park them.</li>
+      <li>This thesis investigates the relationship between cycling infrastructure and SDES usage in Tel Aviv-Yafo, working with roughly <strong>1 million trips and 2 million vehicle status transitions</strong> recorded across the city in July 2023.</li>
+      <li>The central question: do riders simply take the shortest route to their destination, or do they go out of their way to ride near bike lanes — and does that preference also show up in where vehicles are parked and in demand patterns?</li>
+      <li>The findings point toward practical implications for SDES parking policy and for how cities plan and prioritise cycling infrastructure.</li>
+    </ul>
+  </section>
+
+  <section class="proj-section">
+    <h2 class="proj-section-title">Maps — Chosen Route vs. Shortest Path</h2>
+    <img
+      src={`${base}/maps/thesis-route-vs-shortest-path.jpg`}
+      alt="Map comparing a rider's chosen route along the Tel Aviv coastal cycling lane (3,036m, green) against the shortest possible path (2,105m, red)"
+      class="proj-map"
+      loading="lazy"
+    />
+    <p class="proj-map-caption">
+      A rider heading south chose a 3,036m route along the coastal cycling lane (green, dotted = bike lanes)
+      over a 2,105m shortest path (red) — adding roughly 45% extra distance to stay on the dedicated lane.
+    </p>
+    <img
+      src={`${base}/maps/thesis-route-vs-shortest-path-2.jpg`}
+      alt="Map comparing a rider's chosen route that follows a bike lane (2,030m, green) against the shorter direct path (1,494m, red)"
+      class="proj-map"
+      loading="lazy"
+    />
+    <p class="proj-map-caption">
+      A second example: the chosen route (green, 2,030m) tracks a bike lane axis for most of its length,
+      while the shortest path (red, 1,494m) cuts directly through the street grid.
+    </p>
+  </section>
+
+  <section class="proj-section">
+    <h2 class="proj-section-title">What the Analysis Did, in General Terms</h2>
+    <ul class="proj-list">
+      <li><strong>Data:</strong> Two raw datasets — anonymised trip records and vehicle status-change logs — were sourced from the operators' shared-mobility feeds (in the standard MDS format used by municipalities), then cleaned to remove unreliable, circular or non-representative rides.</li>
+      <li><strong>Route choice vs. shortest path:</strong> Each trip's recorded route was map-matched onto the OpenStreetMap street network, and compared against the computed shortest-path alternative between the same origin and destination — letting the analysis measure exactly how much (and where) riders deviated from the most direct way home.</li>
+      <li><strong>Cycling infrastructure exposure:</strong> The ~175 km of bike lanes mapped across Tel Aviv-Yafo (as of July 2023) were overlaid on both the chosen routes and the shortest-path alternatives, to see whether riders' actual paths ran along bike lanes more often than the "optimal" path would.</li>
+      <li><strong>Parking & demand patterns:</strong> Vehicle status-change events (where and when scooters start and end "parked" periods) were spatially joined to the bike-lane network and to the city's neighbourhoods and traffic zones, to test whether supply and demand cluster near cycling infrastructure more than chance would predict.</li>
+    </ul>
+  </section>
+
+  <section class="proj-section">
+    <h2 class="proj-section-title">Key Findings</h2>
+    <ul class="proj-list">
+      <li>On average, riders extended their route by about <strong>9% beyond the shortest path</strong> — and the longer the trip, the larger that detour tended to be.</li>
+      <li>Chosen routes consistently carried a <strong>higher share of cycling infrastructure</strong> than the equivalent shortest-path alternative would, suggesting that many riders actively route themselves toward bike lanes rather than simply taking the fastest way.</li>
+      <li>Parking events — where vehicles are picked up and dropped off — were <strong>concentrated near bike lanes at roughly twice the rate</strong> a random distribution across the city's open public space would produce, with both supply and demand higher (and average parking duration shorter) the closer a location sits to cycling infrastructure.</li>
+      <li>A closer look at specific locations showed that <em>how well-connected</em> a bike lane is to a destination matters: where the lane runs right past a point of interest, vehicles cluster tightly along it; where it's harder to reach (e.g. on the far side of a busy street), riders are more likely to start or end their ride closer to the destination itself, even if that means leaving the lane.</li>
+    </ul>
+  </section>
+
+  <section class="proj-section">
+    <h2 class="proj-section-title">Thesis Document</h2>
+    <p class="proj-body">
+      The full thesis — including the complete literature review, methodology, data tables and discussion —
+      is available to download below.
+    </p>
+    <a class="proj-download" href={`${base}/thesis.pdf`} download>
+      <svg width="14" height="14" viewBox="0 0 12 12" fill="none" aria-hidden="true">
+        <path d="M6 1v7M3.5 5.5L6 8l2.5-2.5M1 10h10" stroke="currentColor"
+          stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      Download Thesis (PDF)
+    </a>
+  </section>
+
+</ProjectLayout>
+
+<style>
+  :global(.proj-list) {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    max-width: 68ch;
+  }
+  :global(.proj-list li) {
+    font-size: 0.9rem;
+    line-height: 1.7;
+    color: #2A2A2A;
+    padding-left: 1.2em;
+    position: relative;
+  }
+  :global(.proj-list li::before) {
+    content: '—';
+    position: absolute;
+    left: 0;
+    color: #3D5E35;
+    font-weight: 600;
+  }
+
+  .proj-download {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 16px;
+    padding: 10px 20px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #F0EAE0;
+    background: #3D5E35;
+    border-radius: 4px;
+    text-decoration: none;
+    transition: background 0.15s;
+    width: fit-content;
+  }
+  .proj-download:hover { background: #2E4828; }
+</style>

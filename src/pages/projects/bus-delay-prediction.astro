@@ -1,0 +1,106 @@
+---
+import ProjectLayout from '../../layouts/ProjectLayout.astro';
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+---
+<ProjectLayout
+  title="Predicting Bus Trip Delays with Machine Learning"
+  year="2025"
+  section="Data Science & Analysis"
+  category="Bar-Ilan University · Data Science Programme"
+  tools={['Python', 'XGBoost', 'SMOTE', 'Optuna', 'SHAP', 'scikit-learn']}
+>
+
+  <section class="proj-section">
+    <h2 class="proj-section-title">Objective</h2>
+    <ul class="proj-list">
+      <li>Bus reliability is one of the biggest factors shaping whether people choose public transport — yet operators and planners often only learn a line is unreliable after the fact.</li>
+      <li>This project, built as part of <strong>Bar-Ilan University's Data Science programme</strong> together with <strong>Tamir Edelstein</strong> of <strong>Elia Transportation Engineering Ltd.</strong>, set out to predict — before or during a trip — whether a bus would arrive <em>early</em>, <em>on time</em>, or <em>delayed</em>.</li>
+      <li>A model that can flag high-risk trips in advance gives operators a practical tool for proactive schedule adjustments, dispatching decisions and rider communication.</li>
+    </ul>
+  </section>
+
+  <section class="proj-section">
+    <h2 class="proj-section-title">Data & Approach, in General Terms</h2>
+    <ul class="proj-list">
+      <li><strong>Data sources:</strong> Real-time vehicle positions and trip records from the SIRI API, scheduled timetables (GTFS), passenger activity counts, weather records and GIS layers describing the route network — merged into a single trip-level dataset.</li>
+      <li><strong>Features:</strong> Combined <em>temporal</em> signals (peak hours, time of day, day of week), <em>spatial</em> signals (route length, curvature, share of the route running on dedicated public-transport infrastructure), <em>operational</em> signals (passenger demand, number of stops, vehicles per line) and <em>historical</em> probability-based features capturing how that line/segment has performed before.</li>
+      <li><strong>Modelling:</strong> Logistic Regression, Random Forest, LightGBM and XGBoost were trained and compared as a three-class classifier (early / on-time / delay). Class imbalance — most trips run on time or are delayed, far fewer run early — was addressed with SMOTE resampling, and the final model's hyperparameters were tuned with Optuna.</li>
+      <li><strong>Explainability:</strong> SHAP values were used to understand which features actually drive each prediction, rather than treating the model as a black box — important for a tool meant to support real operational decisions.</li>
+    </ul>
+  </section>
+
+  <section class="proj-section">
+    <h2 class="proj-section-title">Results</h2>
+    <img
+      src={`${base}/maps/ml-bus-delay-roc-curves.jpg`}
+      alt="ROC curves comparing Logistic Regression, Random Forest, XGBoost and LightGBM across the early, delay and on-time classes"
+      class="proj-map"
+      loading="lazy"
+    />
+    <p class="proj-map-caption">
+      ROC curves across all three classes: XGBoost (red) and LightGBM (orange) clearly outperform the simpler
+      baselines, reaching AUC scores of 0.83 (early), 0.90 (delay) and 0.90 (on-time).
+    </p>
+    <img
+      src={`${base}/maps/ml-bus-delay-shap-summary.png`}
+      alt="SHAP summary plot showing which features most influence the model's prediction of a delayed trip"
+      class="proj-map"
+      loading="lazy"
+    />
+    <p class="proj-map-caption">
+      SHAP summary for the "delay" class — line/direction identity, the historical probability of running early
+      by hour, and arrival hour emerge as the strongest drivers of a delay prediction.
+    </p>
+    <ul class="proj-list">
+      <li>The selected <strong>XGBoost classifier</strong> reached roughly <strong>83% overall accuracy</strong> on the held-out test set — a clear improvement over the "always predict the most frequent class" baseline (~74%, with almost no ability to catch "early" or "on-time" trips).</li>
+      <li>It performed strongly on the operationally critical <strong>delay class</strong> (precision 0.86, recall 0.94, F1 ≈ 0.90), making it well suited to flagging the trips that matter most for proactive intervention.</li>
+      <li>Distinguishing "early" from "on-time" trips remained the hardest part of the problem — both are much rarer than delays and easy to confuse with each other, a limitation the project documents openly as a direction for further work (e.g. richer historical features, finer time resolution).</li>
+    </ul>
+  </section>
+
+  <section class="proj-section">
+    <h2 class="proj-section-title">Code</h2>
+    <p class="proj-body">
+      The full notebooks, data pipeline and write-up are available on GitHub.
+    </p>
+    <a class="proj-external" href="https://github.com/ofer-geo/public_transport_ML" target="_blank" rel="noopener noreferrer">
+      View repository on GitHub →
+    </a>
+  </section>
+
+</ProjectLayout>
+
+<style>
+  :global(.proj-list) {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    max-width: 68ch;
+  }
+  :global(.proj-list li) {
+    font-size: 0.9rem;
+    line-height: 1.7;
+    color: #2A2A2A;
+    padding-left: 1.2em;
+    position: relative;
+  }
+  :global(.proj-list li::before) {
+    content: '—';
+    position: absolute;
+    left: 0;
+    color: #3D5E35;
+    font-weight: 600;
+  }
+
+  .proj-external {
+    display: inline-block;
+    margin-top: 12px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #3D5E35;
+    text-decoration: none;
+  }
+  .proj-external:hover { text-decoration: underline; }
+</style>

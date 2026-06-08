@@ -1,0 +1,94 @@
+---
+import ProjectLayout from '../../layouts/ProjectLayout.astro';
+---
+<ProjectLayout
+  title="Israel Train Stations Dashboard"
+  year="2025"
+  section="Data Science & Analysis"
+  category="Interactive Dashboard · Streamlit"
+  tools={['Python', 'Streamlit', 'Pandas', 'Plotly', 'Folium', 'GTFS']}
+>
+
+  <section class="proj-section">
+    <h2 class="proj-section-title">Objective</h2>
+    <ul class="proj-list">
+      <li>Israel Railways publishes detailed open data on station activity, but exploring it station-by-station and period-by-period takes real digging.</li>
+      <li>This project turns that raw open data into an interactive dashboard that lets anyone — planners, researchers or just curious commuters — explore <strong>passenger departure patterns</strong> across Israel's train stations without writing a line of code.</li>
+    </ul>
+  </section>
+
+  <section class="proj-section">
+    <h2 class="proj-section-title">What It Does, in General Terms</h2>
+    <ul class="proj-list">
+      <li><strong>Data:</strong> Combines official departure activity data from the Israeli Government Open Data Portal with GTFS station coordinates and schedules, focused on the 2025 service year.</li>
+      <li><strong>Station explorer:</strong> Pick any station from the network and view its departure activity at day, month or year resolution — including average daily departures over custom date ranges.</li>
+      <li><strong>Working-day logic:</strong> Automatically separates regular service days from weekends and Israeli public holidays (using the Jewish calendar), so comparisons reflect real operating patterns rather than being skewed by non-service days.</li>
+      <li><strong>Time-of-day breakdown:</strong> Shows how a station's departures are distributed across seven service periods of the day, as a share of its yearly total — useful for spotting peak-hour load and off-peak gaps.</li>
+      <li><strong>Map view:</strong> An embedded interactive Folium map places every station in its geographic context alongside its activity figures.</li>
+    </ul>
+  </section>
+
+  <section class="proj-section">
+    <h2 class="proj-section-title">Try It / Code</h2>
+    <p class="proj-body">
+      The dashboard is deployed live on Streamlit Community Cloud, and the full source is on GitHub.
+    </p>
+    <div class="proj-links">
+      <a class="proj-external proj-external-primary" href="https://israeltrainstationsproject.streamlit.app/" target="_blank" rel="noopener noreferrer">
+        Open live dashboard →
+      </a>
+      <a class="proj-external" href="https://github.com/ofer-geo/israel_train_stations_project" target="_blank" rel="noopener noreferrer">
+        View repository on GitHub →
+      </a>
+    </div>
+  </section>
+
+</ProjectLayout>
+
+<style>
+  :global(.proj-list) {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    max-width: 68ch;
+  }
+  :global(.proj-list li) {
+    font-size: 0.9rem;
+    line-height: 1.7;
+    color: #2A2A2A;
+    padding-left: 1.2em;
+    position: relative;
+  }
+  :global(.proj-list li::before) {
+    content: '—';
+    position: absolute;
+    left: 0;
+    color: #3D5E35;
+    font-weight: 600;
+  }
+
+  .proj-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 12px;
+  }
+  .proj-external {
+    display: inline-block;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #3D5E35;
+    text-decoration: none;
+  }
+  .proj-external:hover { text-decoration: underline; }
+  .proj-external-primary {
+    padding: 10px 20px;
+    color: #F0EAE0;
+    background: #3D5E35;
+    border-radius: 4px;
+    transition: background 0.15s;
+  }
+  .proj-external-primary:hover { background: #2E4828; text-decoration: none; }
+</style>
