@@ -1,0 +1,124 @@
+---
+import ProjectLayout from '../../layouts/ProjectLayout.astro';
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+---
+<ProjectLayout
+  title="ZanSDI — Zanzibar Spatial Data Infrastructure"
+  year="2025–2026"
+  section="GIS Project Management"
+  category="Technical Project Manager · Sivan Design"
+  tools={['GeoNode', 'GeoServer', 'Django', 'PostgreSQL/PostGIS', 'QGIS', 'System Design', 'Capacity Building']}
+>
+
+  <section class="proj-section">
+    <h2 class="proj-section-title">Role & Objective</h2>
+    <ul class="proj-list">
+      <li>I serve as <strong>Technical Project Manager</strong> for ZanSDI, a national geospatial platform built for the Revolutionary Government of Zanzibar under the World Bank–funded <strong>BIG-Z</strong> (Boosting Inclusive Growth for Zanzibar) programme, delivered by Sivan Design.</li>
+      <li>The goal: a <strong>Single Source of Truth</strong> for Zanzibar's spatial data — one platform that lets government agencies discover, share and manage geospatial information, and that planners, researchers and the public can use to support evidence-based decisions across land, water, environment, infrastructure and disaster-risk sectors.</li>
+      <li>My role spans the full technical lifecycle: running the field assessment and stakeholder engagement, authoring the system design, leading the development team building it, and designing the capacity-building programme that hands the system over to its long-term owners.</li>
+    </ul>
+  </section>
+
+  <section class="proj-section">
+    <h2 class="proj-section-title">Leading Design & Development</h2>
+    <ul class="proj-list">
+      <li><strong>System architecture:</strong> Authored the System Design and Deployment Report defining ZanSDI's technical backbone — an open-source stack (GeoNode, GeoServer, Django, PostgreSQL/PostGIS, QGIS) deployed across containerized virtual machines for the web, application and database tiers, with redundancy, secure MPLS connectivity and a backup site built in from the start.</li>
+      <li><strong>Translating business needs into a data model:</strong> Worked with eight government agencies — including the Commission for Lands (COLA), ZPC, ZAWA, ZAFIRI, SUZA, the Forestry Department and Local Government Authorities — to harmonise 39 vector and raster datasets into a single schema (WGS84/UTM Zone 37S), and designed agency-specific use-cases such as synchronising business-licence data with the ZanMutm payment system and giving SUZA a dedicated portal for teaching datasets.</li>
+      <li><strong>Running the field assessment:</strong> Led site visits and stakeholder consultations that surfaced the real constraints driving the design — fragmented, inconsistently referenced data; no up-to-date statewide basemap; capable staff without a formal data-sharing mandate — and turned those findings into a recommendation to formalise a cross-agency Technical Committee with named ZanSDI representatives in each agency.</li>
+      <li><strong>Agile delivery:</strong> Structured the build around iterative sprints with a dedicated Test Zone for agencies to validate new modules before they reach production, plus bi-weekly coordination meetings and monthly stakeholder demos to keep delivery aligned with operational needs.</li>
+    </ul>
+  </section>
+
+  <section class="proj-section">
+    <h2 class="proj-section-title">Designing the Capacity-Building Programme</h2>
+    <ul class="proj-list">
+      <li>Authored the ZanSDI Capacity Building Plan — a modular training programme structured around four user types (regular users, editors, dataset managers and administrators), so each role gets exactly the skills it needs rather than a one-size-fits-all course.</li>
+      <li>Designed module tracks spanning basic and advanced GIS, database and security administration, GeoServer and Django operations, developer onboarding, data-editing workflows and public awareness — each with its own agenda, exercises and manual, and a "train-the-trainer" track so the ZanSDI team can keep delivering training long after handover.</li>
+    </ul>
+  </section>
+
+  <section class="proj-section">
+    <h2 class="proj-section-title">Screenshots</h2>
+    <img
+      src={`${base}/maps/zansdi-landing-page.jpg`}
+      alt="ZanSDI geoportal landing page with the Zanzibar Spatial Data Infrastructure banner and links to Map Portals, Data Catalogue, Dashboards & GeoStories"
+      class="proj-map"
+      loading="lazy"
+    />
+    <p class="proj-map-caption">
+      The ZanSDI landing page — the public entry point to Zanzibar's geoportal, linking out to map portals, the data catalogue and dashboards/GeoStories.
+    </p>
+    <img
+      src={`${base}/maps/zansdi-web-map.jpg`}
+      alt="ZanSDI interactive web map showing colour-coded land-use zones across Zanzibar Town with a layer panel and search bar"
+      class="proj-map"
+      loading="lazy"
+    />
+    <p class="proj-map-caption">
+      The GeoNode-based web-map portal — agencies and the public can browse, query and overlay the platform's harmonised datasets directly in the browser.
+    </p>
+    <img
+      src={`${base}/maps/zansdi-data-table.jpg`}
+      alt="ZanSDI attribute table view listing building parcels with ID, owner, business and tax-status fields alongside a map highlighting the selected parcels"
+      class="proj-map"
+      loading="lazy"
+    />
+    <p class="proj-map-caption">
+      Linked map-and-table view of a building dataset — part of the agency workflows designed to keep records and geometry in sync.
+    </p>
+  </section>
+
+  <section class="proj-section">
+    <h2 class="proj-section-title">Project Link</h2>
+    <p class="proj-body">
+      ZanSDI is live as Zanzibar's national geoportal.
+    </p>
+    <a class="proj-external proj-external-primary" href="https://zansdi.org/" target="_blank" rel="noopener noreferrer">
+      Open ZanSDI →
+    </a>
+  </section>
+
+</ProjectLayout>
+
+<style>
+  :global(.proj-list) {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    max-width: 68ch;
+  }
+  :global(.proj-list li) {
+    font-size: 0.9rem;
+    line-height: 1.7;
+    color: #2A2A2A;
+    padding-left: 1.2em;
+    position: relative;
+  }
+  :global(.proj-list li::before) {
+    content: '—';
+    position: absolute;
+    left: 0;
+    color: #3D5E35;
+    font-weight: 600;
+  }
+
+  .proj-external {
+    display: inline-block;
+    margin-top: 12px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #3D5E35;
+    text-decoration: none;
+  }
+  .proj-external:hover { text-decoration: underline; }
+  .proj-external-primary {
+    padding: 10px 20px;
+    color: #F0EAE0;
+    background: #3D5E35;
+    border-radius: 4px;
+    transition: background 0.15s;
+  }
+  .proj-external-primary:hover { background: #2E4828; text-decoration: none; }
+</style>

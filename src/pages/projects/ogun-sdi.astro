@@ -1,0 +1,124 @@
+---
+import ProjectLayout from '../../layouts/ProjectLayout.astro';
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+---
+<ProjectLayout
+  title="Ogun SDI & LULC Mapping"
+  year="2024–2025"
+  section="GIS Project Management"
+  category="Technical Project Manager · Sivan Design"
+  tools={['GeoNode', 'GeoServer', 'PostGIS', 'QGIS', 'LULC Classification', 'System Integration', 'Capacity Building']}
+>
+
+  <section class="proj-section">
+    <h2 class="proj-section-title">Role & Objective</h2>
+    <ul class="proj-list">
+      <li>I served as <strong>Technical Project Manager</strong> for the Ogun State Spatial Data Infrastructure & LULC Mapping project, delivered by Sivan Design under the <strong>Ogun State Economic Transformation Project (OGSTEP)</strong> for the Ogun State Government, Nigeria.</li>
+      <li>The brief: build a centralized, modern geospatial platform for the state — and use it to produce a statewide Land Use/Land Cover (LULC) mapping deliverable — while leaving behind a system the state's own team could run, extend and trust.</li>
+      <li>My role covered the technical design, leading the development team that built and integrated it, and designing + delivering the training that handed the platform over to the Ogun SDI team.</li>
+    </ul>
+  </section>
+
+  <section class="proj-section">
+    <h2 class="proj-section-title">Leading Design & Development</h2>
+    <ul class="proj-list">
+      <li><strong>System architecture:</strong> Directed the design and deployment of an open-source SDI on GeoNode, GeoServer and PostGIS, deployed on virtual machines in the state's own data center with OGC-compliant web services (WMS/WFS/WCS) and a secured network and database configuration.</li>
+      <li><strong>Designing a tool to meet a real business requirement:</strong> The Bureau of Lands and Survey needed a faster, more reliable way to turn surveyors' plan sketches into registered cadastral parcels. I directed the design of the <strong>Geom Tool</strong> — a custom application, built in-house, that lets surveyors upload structured survey data and semi-automatically generates the parcel geometry, which the Charting Unit then reviews and either approves into the official cadastral layer or sends back. It replaced a slow, fully manual digitization step with an auditable, semi-automated workflow built around how the Charting Unit actually works.</li>
+      <li><strong>Bridging GIS and land administration:</strong> Led the design of the cadastral layers and a state-wide <strong>Unique Parcel Identifier (UPI)</strong> framework, then directed a bi-directional integration between the SDI and <strong>OLARMS</strong> (the state's land administration and revenue system) — the GIS pushes each new UPI to OLARMS by Application ID, and OLARMS pushes registration-status updates back, so spatial data and land-administration records never drift out of sync.</li>
+      <li><strong>LULC mapping deliverable:</strong> Directed the statewide Land Use/Land Cover classification — combining Sentinel-2 and high-resolution satellite imagery with ground control points collected in the field — including a temporal-change analysis comparing land cover across time periods.</li>
+    </ul>
+  </section>
+
+  <section class="proj-section">
+    <h2 class="proj-section-title">Capacity Building & Handover</h2>
+    <ul class="proj-list">
+      <li>Designed and delivered a sequence of hands-on workshops — basic GIS & QGIS, block-drawing, and a dedicated "Charting New Workflow" course that walked the Bureau of Lands and Survey's Charting Unit through the new cadaster layers, the Geom Tool and the OLARMS integration end to end.</li>
+      <li>Led the Administrator Training that formally handed the system to the Ogun SDI team — a Team Lead plus three members — assigning each a clear ongoing role (overall coordination, database administration, user-permissions & charting-workflow oversight, and web-portal management) so the platform has real owners after the project closes.</li>
+    </ul>
+  </section>
+
+  <section class="proj-section">
+    <h2 class="proj-section-title">Screenshots</h2>
+    <img
+      src={`${base}/maps/ogun-sdi-web-map.jpg`}
+      alt="Ogun SDI web-map portal showing the state's Local Government Areas highlighted in green with labels and a search bar"
+      class="proj-map"
+      loading="lazy"
+    />
+    <p class="proj-map-caption">
+      The Ogun SDI web-map portal — a GeoNode-based geoportal giving the state government and the public a browsable view of Ogun's spatial data, including its Local Government Areas.
+    </p>
+    <img
+      src={`${base}/maps/ogun-sdi-imagery.jpg`}
+      alt="High-resolution aerial imagery of an Ogun State settlement showing buildings, roads and farmland used as the basis for LULC classification"
+      class="proj-map"
+      loading="lazy"
+    />
+    <p class="proj-map-caption">
+      High-resolution imagery covering the state — the raw input layered with Sentinel-2 data and ground control points to produce the statewide LULC classification.
+    </p>
+    <img
+      src={`${base}/maps/ogun-sdi-training.jpg`}
+      alt="Administrator training session in progress, with the Ogun SDI team and Sivan Design staff working at laptops around a conference table"
+      class="proj-map"
+      loading="lazy"
+    />
+    <p class="proj-map-caption">
+      The Administrator Training session — handing the platform over to the Ogun SDI team, role by role.
+    </p>
+  </section>
+
+  <section class="proj-section">
+    <h2 class="proj-section-title">Project Link</h2>
+    <p class="proj-body">
+      The Ogun SDI geoportal is live and publicly accessible.
+    </p>
+    <a class="proj-external proj-external-primary" href="https://gis.ogunstate.gov.ng/" target="_blank" rel="noopener noreferrer">
+      Open Ogun SDI →
+    </a>
+  </section>
+
+</ProjectLayout>
+
+<style>
+  :global(.proj-list) {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    max-width: 68ch;
+  }
+  :global(.proj-list li) {
+    font-size: 0.9rem;
+    line-height: 1.7;
+    color: #2A2A2A;
+    padding-left: 1.2em;
+    position: relative;
+  }
+  :global(.proj-list li::before) {
+    content: '—';
+    position: absolute;
+    left: 0;
+    color: #3D5E35;
+    font-weight: 600;
+  }
+
+  .proj-external {
+    display: inline-block;
+    margin-top: 12px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #3D5E35;
+    text-decoration: none;
+  }
+  .proj-external:hover { text-decoration: underline; }
+  .proj-external-primary {
+    padding: 10px 20px;
+    color: #F0EAE0;
+    background: #3D5E35;
+    border-radius: 4px;
+    transition: background 0.15s;
+  }
+  .proj-external-primary:hover { background: #2E4828; text-decoration: none; }
+</style>
