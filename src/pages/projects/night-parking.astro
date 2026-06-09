@@ -30,9 +30,11 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
       loading="lazy"
     />
     <p class="proj-map-caption">
-      Initial service area sizing for three lots at different capacities (250 / 350 / 670 spaces).
-      The catchment radius is set by weighing lot capacity against local population density and
-      competing parking alternatives — larger lots draw from a wider network.
+      Initial service area computation for a single lot, shown at three stages of network expansion
+      (250 → 350 → 670 addresses, up to a 750 m walking-distance ceiling). The model grows the
+      catchment outward along the street network until it reaches equilibrium — balancing the lot
+      against local demand and competing alternatives. A tighter final area signals a high-demand
+      location with few nearby options; a larger one reflects lower pressure or more alternatives.
     </p>
     <img
       src={`${base}/maps/service_areas.png`}
