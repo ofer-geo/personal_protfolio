@@ -24,24 +24,25 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
   <section class="proj-section">
     <h2 class="proj-section-title">Maps</h2>
     <img
-      src={`${base}/maps/night-parking-load-index.jpg`}
-      alt="City-wide map showing the load index of near-home parking lots across Tel Aviv quarters"
-      class="proj-map"
+      src={`${base}/maps/night-parking-network.png`}
+      alt="Three side-by-side panels showing how a lot's initial service area grows with capacity: 250, 350, and 670 spaces — the blue street network and polygon outline expand accordingly"
+      class="proj-map proj-map-sm"
       loading="lazy"
     />
     <p class="proj-map-caption">
-      Parking lot load index across Tel Aviv — circle size shows assigned demand, flagging
-      overloaded lots for capacity planning.
+      Initial service area sizing for three lots at different capacities (250 / 350 / 670 spaces).
+      The catchment radius is set by weighing lot capacity against local population density and
+      competing parking alternatives — larger lots draw from a wider network.
     </p>
     <img
-      src={`${base}/maps/night-parking-service-area.jpg`}
-      alt="Map comparing current vs model-derived service area for HaHashmal near-home parking lot"
-      class="proj-map"
+      src={`${base}/maps/service_areas.png`}
+      alt="Citywide map of Tel Aviv showing model-derived service area polygons for all near-home parking lots as overlapping blue shapes, with lot locations marked in red"
+      class="proj-map proj-map-sm proj-map-portrait"
       loading="lazy"
     />
     <p class="proj-map-caption">
-      Single-lot example (HaHashmal): administratively drawn service boundary (red) vs. model-derived
-      catchment based on shortest-path walking distance (green).
+      Model-derived service areas across the city. Each polygon is the catchment assigned to one
+      lot by the shortest-path model; overlap zones reveal where competing lots split demand.
     </p>
   </section>
 
@@ -91,5 +92,12 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
     left: 0;
     color: #3D5E35;
     font-weight: 600;
+  }
+
+  :global(.proj-map-sm) {
+    max-width: 640px;
+  }
+  :global(.proj-map-portrait) {
+    max-width: 340px;
   }
 </style>
