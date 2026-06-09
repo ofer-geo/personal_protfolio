@@ -1,0 +1,187 @@
+---
+import ProjectLayout from '../../layouts/ProjectLayout.astro';
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+---
+<ProjectLayout
+  title="Towards a Sustainable City Policy for Managing Shared Dockless E-Scooters"
+  year="2024"
+  section="Data Science & Analysis"
+  category="Procedia Computer Science · ABMTRANS 2024, Hasselt"
+  tools={['Python', 'POPULUS / MDS', 'GeoPandas', 'TAZ Analysis', 'GIS']}
+>
+
+  <section class="proj-section">
+    <h2 class="proj-section-title">Background</h2>
+    <div class="proj-body">
+      <p>
+        Shared dockless e-scooter operators have a structural incentive to cluster their fleets
+        in dense, high-demand city centers — leaving peripheral neighborhoods chronically
+        underserved. This paper, published in <em>Procedia Computer Science</em> (ABMTRANS 2024),
+        investigates whether that mismatch is measurable in Tel Aviv and proposes a data-driven
+        policy to correct it.
+      </p>
+      <p>
+        The study draws on an anonymized dataset of <strong>one million shared scooter rides</strong>
+        collected by the Tel Aviv municipality via <strong>POPULUS</strong> across 22 working days
+        in March 2023 — covering roughly 7,500 vehicles operated by 5 companies across the city's
+        52 km². A complementary dataset of <strong>730,000 application activations</strong> from
+        one operator captures what happens when a user opens the app but does not end up riding.
+      </p>
+    </div>
+  </section>
+
+  <section class="proj-section">
+    <h2 class="proj-section-title">Methodology</h2>
+    <ul class="proj-list">
+      <li>Combined supply-side data from all five Tel Aviv operators into a single trip-level dataset via the <strong>MDS / POPULUS</strong> feed.</li>
+      <li>Used <strong>average parking duration per zone</strong> as a demand proxy: a scooter that is picked up quickly signals high latent demand; one left idle for many hours signals oversupply.</li>
+      <li>Aggregated metrics to <strong>Traffic Analysis Zones (TAZ)</strong> to map supply–demand balance across the city at the neighbourhood scale.</li>
+      <li>Analysed <strong>730K application activation records</strong> to measure the ride/no-ride decision — specifically, how proximity to the nearest available scooter determines whether users proceed with a trip.</li>
+    </ul>
+  </section>
+
+  <section class="proj-section">
+    <h2 class="proj-section-title">Results</h2>
+
+    <h3 class="proj-subsection-title">Figure 2 — Demand heterogeneity across the city</h3>
+    <img
+      src={`${base}/maps/scooter-policy-fig2.png`}
+      alt="Three-panel figure: (a) TAZ map of average scooter parking duration across Tel Aviv — darker zones in the center indicate higher turnover and demand; (b) distribution of all parking durations showing many scooters idle for half a day or more; (c) bar chart showing parking duration drops by nearly an hour when scooters are within 5m of a bike path"
+      class="proj-map"
+      loading="lazy"
+    />
+    <p class="proj-map-caption">
+      Figure 2. Average parking duration by TAZ (a) reveals that demand is concentrated in the center
+      and falls sharply toward the periphery. Panel (b) shows many scooters sitting idle for 6–12+
+      hours — a strong oversupply signal. Panel (c) shows proximity to a bike path cuts idle time
+      by almost an hour, especially in the center where cycling infrastructure is densest.
+    </p>
+
+    <h3 class="proj-subsection-title">Figure 3 — Where supply exceeds demand, and where it falls short</h3>
+    <img
+      src={`${base}/maps/scooter-policy-fig3.png`}
+      alt="Two maps side by side: (a) density of scooters parked longer than 12 hours — hotspots concentrated in the central tourist and commercial areas indicating oversupply; (b) density of scooters parked less than 30 minutes — more spatially dispersed, indicating where active demand is highest"
+      class="proj-map"
+      loading="lazy"
+    />
+    <p class="proj-map-caption">
+      Figure 3. Scooters idle for more than 12 hours (a) pile up in the central tourist and commercial
+      zones — clear oversupply. Scooters turned over within 30 minutes (b) are more dispersed but
+      absent from large peripheral stretches, where demand exists but is starved of supply. We
+      attribute this pattern to a <em>Mohring-like feedback</em>: operators concentrate in the
+      center to guarantee profit, which erodes demand at the periphery through chronic unavailability.
+    </p>
+
+    <h3 class="proj-subsection-title">Figure 6 — The ride/no-ride decision and its spatial footprint</h3>
+    <img
+      src={`${base}/maps/scooter-policy-fig6.png`}
+      alt="Five-panel figure: (a) histogram showing 95% of rides start within 110m of the chosen scooter; (b) 75% of users choose the nearest available scooter; (c) the longer a scooter sits idle, the less likely it is to be chosen; (d) users who find no scooter within 100m abandon the trip in 30%+ of cases; (e) TAZ map of no-ride activation rates — near-zero in the center, 15–25% on the periphery"
+      class="proj-map"
+      loading="lazy"
+    />
+    <p class="proj-map-caption">
+      Figure 6. The ride decision is highly proximity-driven: 95% of riders choose a scooter within
+      110 m (a), 75% take the closest one (b), and older-parked scooters are progressively less
+      likely to be chosen (c). When no scooter is within 100 m, more than 30% of activations end
+      without a ride (d). Spatially, this no-ride rate is virtually zero in the Tel Aviv center
+      but climbs to 15–25% on the periphery (e) — the direct consequence of the supply deficit
+      documented in Figure 3.
+    </p>
+
+    <div class="proj-body">
+      <p>
+        Based on this analysis, the paper proposes a citywide policy built on two mechanisms:
+        establishing parking cells across all populated areas at no more than 200 m spacing, and
+        requiring operators to relocate scooters idle for 8–12+ hours from oversupplied cells to
+        undersupplied ones. The policy turns oversupply into a directly observable, actionable
+        signal rather than relying on blunt percentage quotas for peripheral districts.
+      </p>
+    </div>
+  </section>
+
+  <section class="proj-section">
+    <h2 class="proj-section-title">Publication</h2>
+    <p class="proj-body">
+      Published in <em>Procedia Computer Science</em>, vol. 238, pp. 722–727, as part of the
+      13th International Workshop on Agent-based Mobility, Traffic and Transportation Models
+      (ABMTRANS 2024), Hasselt, Belgium.
+    </p>
+    <a
+      class="proj-external"
+      href="https://doi.org/10.1016/j.procs.2024.06.083"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      View paper on ScienceDirect →
+    </a>
+    <a class="proj-download" href={`${base}/Scooters_2024.pdf`} download>
+      <svg width="14" height="14" viewBox="0 0 12 12" fill="none" aria-hidden="true">
+        <path d="M6 1v7M3.5 5.5L6 8l2.5-2.5M1 10h10" stroke="currentColor"
+          stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      Download PDF
+    </a>
+  </section>
+
+</ProjectLayout>
+
+<style>
+  :global(.proj-list) {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    max-width: 68ch;
+  }
+  :global(.proj-list li) {
+    font-size: 0.9rem;
+    line-height: 1.7;
+    color: #2A2A2A;
+    padding-left: 1.2em;
+    position: relative;
+  }
+  :global(.proj-list li::before) {
+    content: '—';
+    position: absolute;
+    left: 0;
+    color: #3D5E35;
+    font-weight: 600;
+  }
+
+  .proj-subsection-title {
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: #2A2A2A;
+    margin: 28px 0 12px;
+    letter-spacing: -0.01em;
+  }
+
+  .proj-external {
+    display: inline-block;
+    margin-top: 12px;
+    margin-right: 16px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #3D5E35;
+    text-decoration: none;
+  }
+  .proj-external:hover { text-decoration: underline; }
+
+  .proj-download {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 12px;
+    padding: 10px 20px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #F0EAE0;
+    background: #3D5E35;
+    border-radius: 4px;
+    text-decoration: none;
+    transition: background 0.15s;
+    width: fit-content;
+  }
+  .proj-download:hover { background: #2E4828; }
+</style>
