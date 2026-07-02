@@ -1,0 +1,119 @@
+---
+import ProjectLayout from '../../layouts/ProjectLayout.astro';
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+---
+<ProjectLayout
+  title="Israel Transit AI Agent — Conversational GTFS/SIRI Assistant"
+  year="2026"
+  section="Data Science & Analysis"
+  category="Bar-Ilan University · Data Science Programme — Work in Progress"
+  tools={['Python', 'LLM Agents', 'Tool Calling', 'DuckDB', 'Streamlit', 'Multi-LLM Fallback']}
+>
+
+  <section class="proj-section">
+    <h2 class="proj-section-title">Background</h2>
+    <div class="proj-body">
+      <p>
+        Finding out when a bus actually leaves means digging through a GTFS feed by hand — raw
+        tables of stops, trips and calendars with no natural way to ask a simple question. Built
+        with <strong>Tamir Edelstein</strong> of <strong>Elia Transportation Engineering</strong>
+        for <strong>Bar-Ilan University's Data Science programme</strong>, this project wraps
+        Israel's live GTFS/SIRI public transit data in a conversational AI agent: ask about a
+        line's stops, operators, timetable or departure frequency in plain Hebrew or English, and
+        get back a grounded answer plus an interactive map or chart.
+      </p>
+      <p>
+        This is an active, ongoing build — the agent's reasoning and guardrails are still being
+        tightened as new edge cases surface.
+      </p>
+    </div>
+  </section>
+
+  <section class="proj-section">
+    <h2 class="proj-section-title">Methodology</h2>
+    <ul class="proj-list">
+      <li>Built a <strong>ReAct-style tool-calling agent</strong> that orchestrates a chain of purpose-built tools — line/route disambiguation, stop lookup, timetables, departure-frequency queries and raw SQL — over a live <strong>GTFS/SIRI</strong> feed loaded into an in-memory <strong>DuckDB</strong> database.</li>
+      <li><strong>Multi-provider LLM backbone</strong> (Google Gemini, Groq-hosted open models) with automatic failover: on a rate-limit or quota error the agent silently drops to the next model in a priority chain instead of surfacing an error to the user.</li>
+      <li>Layered deterministic guardrails around the LLM's own decisions — enforced agency/route/direction disambiguation flows, a self-verification pass that checks each draft answer against the original question, and code-built fallback logic for ambiguous schedule requests — to curb hallucination on weaker fallback models.</li>
+      <li><strong>Bilingual by design</strong>: detects Hebrew vs. English from the user's message and replies in kind, while keeping GTFS names (stops, agencies, headsigns) in their original Hebrew form.</li>
+      <li>Real-time visual answers: auto-generated interactive <strong>Plotly</strong> route maps (stops numbered, one color per direction) the moment a line is resolved, plus departure-frequency charts and timetables, all rendered live in a <strong>Streamlit</strong> chat interface that narrates the agent's own tool calls and model switches as it works.</li>
+    </ul>
+  </section>
+
+  <section class="proj-section">
+    <h2 class="proj-section-title">Results</h2>
+    <img
+      src={`${base}/maps/gtfs-agent-route-map.jpg`}
+      alt="Streamlit chat interface for the Israel Transit Agent showing a conversation about a bus line alongside an interactive route map with numbered stop markers"
+      class="proj-map"
+      loading="lazy"
+    />
+    <p class="proj-map-caption">
+      Chat pane on the left, live route map on the right — a route map is generated automatically
+      the moment a line is uniquely identified.
+    </p>
+    <img
+      src={`${base}/maps/gtfs-agent-departure-chart.jpg`}
+      alt="Interactive Plotly chart showing average departures per hour for a bus line, broken down by working days, Friday and Saturday"
+      class="proj-map"
+      loading="lazy"
+    />
+    <p class="proj-map-caption">
+      Departure-frequency chart by hour and day type, generated on request from the live GTFS data.
+    </p>
+    <div class="proj-body">
+      <p>
+        The agent can already answer natural-language questions about first/last stops, operators,
+        specific-day timetables and hourly departure frequency for any line in Israel's national
+        GTFS feed — reasoning transparently over real data rather than a fixed FAQ, and switching
+        models on the fly to stay available on free-tier rate limits.
+      </p>
+    </div>
+  </section>
+
+  <section class="proj-section">
+    <h2 class="proj-section-title">Code</h2>
+    <p class="proj-body">
+      Still under active development — source is public on GitHub.
+    </p>
+    <a class="proj-external" href="https://github.com/ofer-geo/SIRI-Data-Agent" target="_blank" rel="noopener noreferrer">
+      View repository on GitHub →
+    </a>
+  </section>
+
+</ProjectLayout>
+
+<style>
+  :global(.proj-list) {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    max-width: 68ch;
+  }
+  :global(.proj-list li) {
+    font-size: 0.9rem;
+    line-height: 1.7;
+    color: #2A2A2A;
+    padding-left: 1.2em;
+    position: relative;
+  }
+  :global(.proj-list li::before) {
+    content: '—';
+    position: absolute;
+    left: 0;
+    color: #3D5E35;
+    font-weight: 600;
+  }
+
+  .proj-external {
+    display: inline-block;
+    margin-top: 12px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #3D5E35;
+    text-decoration: none;
+  }
+  .proj-external:hover { text-decoration: underline; }
+</style>
